@@ -1,0 +1,8 @@
+ED
+	d1, d2, d3, d4, d5, media REAL
+ALG
+INICIO
+	LER (d1, d2, d3, d4, d5)
+	MEDIA <- ((d1+ d2+ d3 + d4 + d5) / 5) * 1.609
+	ESCREVER ("Distancia media diaria em Km = ", media)
+FIM
