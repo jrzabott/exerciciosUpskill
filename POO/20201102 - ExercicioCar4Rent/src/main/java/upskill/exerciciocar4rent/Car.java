@@ -28,11 +28,10 @@ public class Car {
 
     public static int anoClassificacaoRecente = 1;
     public static int anoClassificacaoContemporaneo = 20;
-    
+
     public static String CLASSIFICACAO_RECENTE = "recente";
     public static String CLASSIFICACAO_CONTEMP = "contemporaneo";
     public static String CLASSIFICACAO_CLASSICO = "classico";
-
 
     public Car() {
         this.license = LICENSE_DEFAULT;
