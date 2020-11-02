@@ -5,7 +5,7 @@
  */
 package upskill.exerciciocar4rent;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -24,10 +24,11 @@ public class Car {
     private final double FUEL_CONSUMPTION_DEFAULT = 0.0;
     private final double KM_AUTONOMY_DEFAULT = 0.0;
     private final double CC_DEFAULT = 0.0;
-    private final Date TODAY = new Date();
+    private final int TODAY = Calendar.getInstance().get(Calendar.YEAR);
 
-    public static int anoClassificacaoRecente = 1;
-    public static int anoClassificacaoContemporaneo = 20;
+    private static int anoClassificacaoRecente = 1;
+    private static int anoClassificacaoContemporaneo = 20;
+    private static double taxaAmbiental = 20.0;
 
     public static String CLASSIFICACAO_RECENTE = "recente";
     public static String CLASSIFICACAO_CONTEMP = "contemporaneo";
@@ -41,17 +42,16 @@ public class Car {
         this.cc = CC_DEFAULT;
     }
 
-    public Car(String license, int year, double fuelConsumption, double kmAutonomy, double cc) {
+    public Car(String license, int year, double fuelConsumption,
+            double kmAutonomy, double cc) {
+
         if (!license.isEmpty()) {
             this.license = license;
         } else {
             this.license = LICENSE_DEFAULT;
         }
-        if (year < 1900) {
-            this.year = YEAR_DEFAULT;
-        } else {
-            this.year = year;
-        }
+
+        this.year = year;
         this.fuelConsumption = fuelConsumption;
         this.kmAutonomy = kmAutonomy;
         this.cc = cc;
@@ -98,33 +98,48 @@ public class Car {
         this.cc = cc;
     }
 
-    public double getImpostoDeCirculacao(double txAmb) {
-        return txAmb * cc;
+    public double getImpostoDeCirculacao() {
+        return taxaAmbiental * cc;
     }
 
+    public static void setTaxaAmbiental(double taxaAmbiental) {
+        Car.taxaAmbiental = taxaAmbiental;
+    }
+
+    // TODO Inverter lógica do cálculo
     public String getClassificacao() {
         return (this.year >= calcularAnoClassificacao(anoClassificacaoRecente))
                 ? CLASSIFICACAO_RECENTE
-                : (this.year >= calcularAnoClassificacao(anoClassificacaoContemporaneo))
-                ? (CLASSIFICACAO_CONTEMP)
-                : CLASSIFICACAO_CLASSICO;
+                : (this.year >= calcularAnoClassificacao(
+                        anoClassificacaoContemporaneo))
+                        ? (CLASSIFICACAO_CONTEMP)
+                        : CLASSIFICACAO_CLASSICO;
     }
 
     @Override
     public String toString() {
-        return "Car{" + "license=" + license + ", year=" + year + ", fuelConsumption=" + fuelConsumption + ", kmAutonomy=" + kmAutonomy + ", cc=" + cc + ", LICENSE_DEFAULT=" + LICENSE_DEFAULT + ", YEAR_DEFAULT=" + YEAR_DEFAULT + ", today=" + TODAY + ", CONSUMPTION_DEFAULT=" + FUEL_CONSUMPTION_DEFAULT + ", KM_AUTONOMY_DEFAULT=" + KM_AUTONOMY_DEFAULT + '}';
+        return "Car{" + "license=" + license
+                + ", year=" + year
+                + ", fuelConsumption=" + fuelConsumption
+                + ", kmAutonomy=" + kmAutonomy
+                + ", cc=" + cc
+                + ", LICENSE_DEFAULT=" + LICENSE_DEFAULT
+                + ", YEAR_DEFAULT=" + YEAR_DEFAULT
+                + ", today=" + TODAY
+                + ", CONSUMPTION_DEFAULT=" + FUEL_CONSUMPTION_DEFAULT
+                + ", KM_AUTONOMY_DEFAULT=" + KM_AUTONOMY_DEFAULT + '}';
     }
 
     public void setANO_CLASSIFICACAO_RECENTE(int ANO_CLASSIFICACAO_RECENTE) {
-        this.anoClassificacaoRecente = ANO_CLASSIFICACAO_RECENTE;
+        Car.anoClassificacaoRecente = ANO_CLASSIFICACAO_RECENTE;
     }
 
     public void setANO_CLASSIFICACAO_CONTEMP(int ANO_CLASSIFICACAO_CONTEMP) {
-        this.anoClassificacaoContemporaneo = ANO_CLASSIFICACAO_CONTEMP;
+        Car.anoClassificacaoContemporaneo = ANO_CLASSIFICACAO_CONTEMP;
     }
 
     final public int calcularAnoClassificacao(int anoClassificacao) {
-        return 1900 + TODAY.getYear() - anoClassificacao;
+        return TODAY - anoClassificacao;
     }
 
 }

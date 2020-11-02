@@ -18,7 +18,8 @@ public class CarMain {
        Car c1 = new Car("BB-15-AA", 1990, 10, 100, 1300);
        Car c2 = new Car("CC-15-AA", 2017, 12, 150, 1600);
        Car c3 = new Car("XP-15-TO", 2020, 18, 300, 2000);
-       
+        
+        // TODO Corrigir Outputs de acordo com a folha de exercícios.
         System.out.println(c1.getClassificacao());
         System.out.println(c2.getClassificacao());
         System.out.println(c3.getClassificacao());

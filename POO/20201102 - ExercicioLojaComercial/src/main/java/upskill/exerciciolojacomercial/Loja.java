@@ -43,13 +43,7 @@ public class Loja {
         this.area = area;
         this.receitas = receitas;
 
-        if (area < areaLojaPequena) {
-            this.classificaoLoja = CLASSIFICACAO_LOJA_PEQUENA;
-        } else if (area <= areaLojaMedia) {
-            this.classificaoLoja = CLASSIFICACAO_LOJA_MEDIA;
-        } else {
-            this.classificaoLoja = CLASSIFICACAO_LOJA_GRANDE;
-        }
+       
     }
 
     public Loja() {
@@ -93,11 +87,15 @@ public class Loja {
     }
 
     public String getClassificaoLoja() {
-        return classificaoLoja;
-    }
-
-    public void setClassificaoLoja(String classificaoLoja) {
-        this.classificaoLoja = classificaoLoja;
+        String classificacaoLoja; 
+        if (area < areaLojaPequena) {
+            classificacaoLoja = CLASSIFICACAO_LOJA_PEQUENA;
+        } else if (area <= areaLojaMedia) {
+            classificacaoLoja = CLASSIFICACAO_LOJA_MEDIA;
+        } else {
+            classificacaoLoja = CLASSIFICACAO_LOJA_GRANDE;
+        }
+        return classificacaoLoja;
     }
 
     public static double getRendaFixa() {
@@ -122,7 +120,7 @@ public class Loja {
 
     @Override
     public String toString() {
-        return "Loja{" + "id=" + id + ", desc=" + desc + ", area=" + area + ", receitas=" + receitas + ", classificaoLoja=" + classificaoLoja + ", renda=" + getRenda() + ", DESC_DEFAULT=" + DESC_DEFAULT + ", CLASSIFICACAO_LOJA_DEFAULT=" + CLASSIFICACAO_LOJA_DEFAULT + '}';
+        return "Loja{" + "id=" + id + ", desc=" + desc + ", area=" + area + ", receitas=" + receitas + ", renda=" + getRenda() + ", DESC_DEFAULT=" + DESC_DEFAULT + ", CLASSIFICACAO_LOJA_DEFAULT=" + CLASSIFICACAO_LOJA_DEFAULT + '}';
     }
 
 }
