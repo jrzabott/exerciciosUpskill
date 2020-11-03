@@ -28,9 +28,9 @@ public class Utente {
     
     private static int countUtentes = 0; // Count numer of instantiated Utentes
 
-    private final String MAGRO_TEXTO_CLASSIFICACAO = "magro";
-    private final String SAUDAVEL_TEXTO_CLASSIFICACAO = "saudável";
-    private final String OBESO_TEXTO_CLASSIFICACAO = "obeso";
+    public static final String MAGRO_TEXTO_CLASSIFICACAO = "magro";
+    public static final String SAUDAVEL_TEXTO_CLASSIFICACAO = "saudável";
+    public static final String OBESO_TEXTO_CLASSIFICACAO = "obeso";
 
     /**
      * Constructor with defaults.
@@ -228,6 +228,9 @@ public class Utente {
      * older.
      */
     public Utente isYounger(Utente pessoa2) {
+        if (this.getAge() == pessoa2.getAge()) {
+            System.out.println("Utentes de mesma idade.");
+        }
         return (this.getAge() == pessoa2.getAge())
                 ? null
                 : (this.getAge() > pessoa2.getAge())
