@@ -1,8 +1,0 @@
-ED
-	x1, x2, y1, y2, d REAL
-ALG
-INICIO
-	LER (x1, y1, x2, y2)
-	d <- ( ((x2 - x1) ^ 2) + ((y2 - y1) ^ 2) ) ^ (1 / 2)
-	ESCREVER ("Distancia media diaria em Km = ", d)
-FIM
