@@ -1,0 +1,63 @@
+ED
+	d, m, dr INTEGER
+ALG
+INICIO
+	LER (d, m)
+	SE (d >= 1 E d <= 31 E m >= 1 E m <= 12)
+		SE (m = 1)	
+			dr <- 365
+		FIMSE
+		SE (m = 2)	
+			dr <- 334
+		FIMSE
+		SE (m = 3)	
+			dr <- 306
+		FIMSE
+		SE (m = 4)	
+			dr <- 276
+		FIMSE
+		SE (m = 5)	
+			dr <- 246
+		FIMSE
+		SE (m = 6)	
+			dr <- 214
+		FIMSE
+		SE (m = 7)	
+			dr <- 184
+		FIMSE
+		SE (m = 8)	
+			dr <- 153
+		FIMSE
+		SE (m = 9)	
+			dr <- 122
+		FIMSE
+		SE (m = 10)	
+			dr <- 092
+		FIMSE
+		SE (m = 11)	
+			dr <- 061
+		FIMSE
+		SE (m = 12)	
+			dr <- 031
+		FIMSE
+		dr <- dr - d
+		ESCREVER (dr, " Dias Restantes para o fim do ano.")
+	SENAO
+		ESCREVER ("DATA INVÁLIDA")
+	FIMSE
+FIM
+
+
+PARA AUXILIAR OS CALCULOS (Relacao de meses do ano e dias restantes para o fim):
+1 - 365 - 31
+2 - 334 - 28
+3 - 306 - 31
+4 - 276 - 30
+5 - 246 - 31
+6 - 214 - 30
+7 - 184 - 31
+8 - 153 - 31
+9 - 122 - 30
+0 - 092 - 31
+1 - 061 - 30
+2 - 031 - 31

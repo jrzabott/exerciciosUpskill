@@ -1,0 +1,12 @@
+0000000000000000000000000000000000000000 198ad068d71fd6dd1eb29ad833d45131cc9ee91e Daniel Junior <jrzabott@gmail.com> 1604225452 +0000	commit (initial): first commit
+198ad068d71fd6dd1eb29ad833d45131cc9ee91e 0000000000000000000000000000000000000000 Daniel Junior <jrzabott@gmail.com> 1604225458 +0000	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 198ad068d71fd6dd1eb29ad833d45131cc9ee91e Daniel Junior <jrzabott@gmail.com> 1604225458 +0000	Branch: renamed refs/heads/master to refs/heads/main
+198ad068d71fd6dd1eb29ad833d45131cc9ee91e fce76ff1c1b420ba8d173ee925999bfc2ffddd4b Daniel Junior <jrzabott@gmail.com> 1604225723 +0000	commit: second commit
+fce76ff1c1b420ba8d173ee925999bfc2ffddd4b c0bdcaea55a8c0c77c08bf9053351bebe57bf681 Daniel Junior <jrzabott@gmail.com> 1604317225 +0000	commit: commit of today
+c0bdcaea55a8c0c77c08bf9053351bebe57bf681 ff50f7201ac8c7a84ff9c0cd87f8543df0285f41 Daniel Junior <jrzabott@gmail.com> 1604317659 +0000	commit: foldes renamed and moved
+ff50f7201ac8c7a84ff9c0cd87f8543df0285f41 f8be1bf36267b47f08b6645da3a66cdb15fc9491 Daniel Junior <jrzabott@gmail.com> 1604318054 +0000	commit: Removed a few unused zip files.
+f8be1bf36267b47f08b6645da3a66cdb15fc9491 c70f9807e3d2679c5e1d766a1bed79cc097ac244 Daniel Junior <jrzabott@gmail.com> 1604318379 +0000	commit: netbeans plugins added
+c70f9807e3d2679c5e1d766a1bed79cc097ac244 8aec7425b8b6d32409d31625b8a4e77e3046c5a3 Daniel Junior <jrzabott@gmail.com> 1604350212 +0000	commit: complex numbers exercise added
+8aec7425b8b6d32409d31625b8a4e77e3046c5a3 c2594060db6429773ec4664372010abb7c60a847 Daniel Junior <jrzabott@gmail.com> 1604350626 +0000	commit: just checking
+c2594060db6429773ec4664372010abb7c60a847 ffc13aa7f3fa8177b1356cee71dec2ee45ea50b9 Daniel Junior <jrzabott@gmail.com> 1604352769 +0000	commit: added Javadoc to ComplexNumber
+ffc13aa7f3fa8177b1356cee71dec2ee45ea50b9 65ead7aa046550f18c425ea79a956eea9474c72f Daniel Junior <jrzabott@gmail.com> 1604358647 +0000	commit: added Javadoc to ComplexNumber

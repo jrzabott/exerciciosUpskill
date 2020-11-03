@@ -1,0 +1,24 @@
+ED:
+    num, i INTEIRO
+ALG
+FIM
+    REPETIR
+        LER (num)
+    ENQUANTO (num < 2 OU num > 20)
+    
+    PARA i <- 1 ATÉ num
+        ENQUANTO (count <= i)
+            ESCREVER count
+            count <- count + 1
+        FIM ENQUANTO
+    FIM PARA
+
+    count <- 1
+    PARA i <- num - 1 ATÉ 0 PASSO -1
+        ENQUANTO (count <= 1)
+            ESCREVE count
+            count <- count + 1
+        FIM ENQUANTO
+        count <- 1;
+    FIM PARA
+INICIO

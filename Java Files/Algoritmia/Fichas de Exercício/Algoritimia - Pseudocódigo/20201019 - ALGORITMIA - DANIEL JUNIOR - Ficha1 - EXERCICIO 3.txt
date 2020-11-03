@@ -1,0 +1,13 @@
+ED
+	x, y REAL
+ALG
+INICIO
+	LER (x)
+	SE (x = 0)
+		y <- 0
+	SE (x < 0)
+		y <- x
+	SENAO
+		y <- (x * ( x - 2))
+	ESCREVER ("F(x) = ", y)
+FIM
