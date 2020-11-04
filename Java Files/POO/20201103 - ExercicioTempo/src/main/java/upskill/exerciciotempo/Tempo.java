@@ -48,7 +48,7 @@ public class Tempo {
      *
      * @param hh
      * @param mm Constructor that uses only hour and min to return a Time -
- hora:minuto:00
+     * hora:minuto:00
      */
     public Tempo(int hh, int mm) {
         this.hora = hh;
@@ -58,7 +58,8 @@ public class Tempo {
 
     /**
      *
-     * @param hh Constructor that uses only the hours to create a time. hora:00:00
+     * @param hh Constructor that uses only the hours to create a time.
+     * hora:00:00
      */
     public Tempo(int hh) {
         this.hora = hh;
@@ -235,22 +236,43 @@ public class Tempo {
                 + s;
     }
 
+    /**
+     * Convert an number of hours in seconds.
+     *
+     * @param hours
+     * @return a integer represeting the amount of seconds
+     */
     private int convertHoursToSeconds(int hours) {
         return hours * HOUR_IN_SECONDS;
     }
 
+    /**
+     * Convert an number of minutes in seconds.
+     *
+     * @param minutes
+     * @return a integer representing the amount of seconds
+     */
     private int convertMinutesToSeconds(int minutes) {
         return minutes * MINUTES_IN_SECONDS;
     }
 
+    /**
+     * increments one unity into the property Segundo
+     */
     private void secondInc() {
         this.setSegundo((this.getSsegundo() + 1) % MINUTES_IN_SECONDS);
     }
 
+    /**
+     * increments one unity into the property Minuto
+     */
     private void minuteInc() {
         this.setMinuto((this.getMinuto() + 1) % HOUR_IN_MINUTES);
     }
-
+    
+    /**
+     * increments one unity into the property Hora
+     */
     private void hourInc() {
         this.setHora((this.getHora() + 1) % DAY_IN_HOURS);
     }

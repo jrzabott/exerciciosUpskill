@@ -188,7 +188,8 @@ public class Utente {
 
     @Override
     public String toString() {
-        return "Utente{" + "name=" + name + ", gender=" + gender + ", age=" + age + ", height=" + height + ", weight=" + weight + '}';
+        String s="Utente{name=%s, gender=%s,age=%d, height=%.2f, weight=%.2f}";
+        return String.format(s,getName(),getGender(), getAge(), getHeight(), getWeigth());
     }
 
     /**

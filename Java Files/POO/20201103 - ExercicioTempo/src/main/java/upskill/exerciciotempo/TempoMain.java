@@ -11,7 +11,7 @@ package upskill.exerciciotempo;
  */
 public class TempoMain {
 
-    private static String separator = "========================================"
+    private static final String separator = "========================================"
             + "========================================";
 
     /**
@@ -43,7 +43,7 @@ public class TempoMain {
                 + "========================================";
 
         System.out.println(separator);
-        System.out.println("Crie uma instância da classe Tempo com o nome t1 e "
+        System.out.println("Cria uma instância da classe Tempo com o nome t1 e "
                 + "que represente o tempo: \n5 horas, 30 minutos e 12 segundos."
         );
         System.out.println(separator);
@@ -51,39 +51,39 @@ public class TempoMain {
         System.out.println(t1);
 
         System.out.println(separator);
-        System.out.println("Mostre o tempo t1 usando o formato hh:mm:ss AM "
+        System.out.println("Mostra o tempo t1 usando o formato hh:mm:ss AM "
                 + "(ou PM)"
         );
         System.out.println(separator);
         System.out.println(t1.formatAMPM());
 
         System.out.println(separator);
-        System.out.println("Acrescente 1 segundo ao tempo t1.");
+        System.out.println("Acrescenta 1 segundo ao tempo t1.");
         System.out.println(separator);
         t1.tick();
         System.out.println("t1.tick()");
 
         System.out.println(separator);
-        System.out.println("Mostre novamente t1 usando o formato “hh:mm:ss AM "
+        System.out.println("Mostra novamente t1 usando o formato “hh:mm:ss AM "
                 + "(ou PM)”.");
         System.out.println(separator);
         System.out.println(t1.formatAMPM());
 
         System.out.println(separator);
-        System.out.println("Crie uma outra instância da classe Tempo chamada t2"
+        System.out.println("Cria uma outra instância da classe Tempo chamada t2"
                 + "que guarde o tempo:18 horas,\n5 minutos e 20 segundos.");
         System.out.println(separator);
         Tempo t2 = new Tempo(18, 5, 20);
         System.out.println("Tempo t2 = new Tempo(18, 5, 20);");
 
         System.out.println(separator);
-        System.out.println("Mostre o tempo t2 usando o formato “hh:mm:ss AM "
+        System.out.println("Mostra o tempo t2 usando o formato “hh:mm:ss AM "
                 + "(ou PM)”.");
         System.out.println(separator);
         System.out.println(t2.formatAMPM());
 
         System.out.println(separator);
-        System.out.println("Verifique se o tempo t1 é maior do que o tempo 23"
+        System.out.println("Verifica se o tempo t1 é maior do que o tempo 23"
                 + "horas, 7 minutos\ne 4 segundos usando o método que recebe "
                 + "por parâmetro as horas, os minutos e\nos segundos de um "
                 + "tempo.");
