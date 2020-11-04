@@ -1,0 +1,16 @@
+Facilitar
+4 Docs do Mail
+    + Nome completo
+    + Morada
+    + Documento de Identificação
+
+- Documentos deverão ser impressos e assinados
+- Declarações aguardam assinatura do contrato.
+- Minuta será partilhada via Zoom
+- Bolsas serão disponibilizadas até o dia 10 do Mês Seguinte
+- Privilegiar os endereços: upskill.porto@isep.ipp.pt
+
+https://www.baeldung.com/java-method-return-multiple-values
+https://blog.stoneriverelearning.com/10-java-coding-tips-every-programmer-should-know/
+https://www.javacodegeeks.com/2010/12/things-every-programmer-should-know.html
+https://www.coursereport.com/blog/what-is-java-programming-used-for

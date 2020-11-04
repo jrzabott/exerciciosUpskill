@@ -78,6 +78,8 @@ public class UtenteMain {
         utentes[0].setAge(tmp);
         System.out.println(String.format("Depois: utentes[0].getAge(): %d e utentes[1].getAge(): %d",utentes[0].getAge(), utentes[1].getAge()));
         
+//        utentes[0].setAge(tmp);
+//        utentes[1].setAge(tmp);
         System.out.println("================================================");
         System.out.println("CHECAR QUAL DOS UTENTES É O MAIS NOVO:");
         System.out.println("================================================");
