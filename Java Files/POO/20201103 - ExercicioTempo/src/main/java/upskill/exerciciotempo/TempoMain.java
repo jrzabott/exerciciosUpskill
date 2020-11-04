@@ -18,27 +18,27 @@ public class TempoMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Tempo t = new Tempo(10, 00, 00);
-        System.out.println(t);
-        t.tick();
-        System.out.println(t);
-
-        t.setSs(59);
-        t.tick();
-        System.out.println(t);
-
-        t.setSs(59);
-        t.setMm(59);
-        t.tick();
-        System.out.println(t);
-
-        t.setSs(59);
-        t.setMm(59);
-        t.setHh(23);
-        t.tick();
-        System.out.println(t);
-
-        System.out.println(t.secondsToTempoObject(3700));
+//        Tempo t = new Tempo(10, 00, 00);
+//        System.out.println(t);
+//        t.tick();
+//        System.out.println(t);
+//
+//        t.setSs(59);
+//        t.tick();
+//        System.out.println(t);
+//
+//        t.setSs(59);
+//        t.setMm(59);
+//        t.tick();
+//        System.out.println(t);
+//
+//        t.setSs(59);
+//        t.setMm(59);
+//        t.setHh(23);
+//        t.tick();
+//        System.out.println(t);
+//
+//        System.out.println(t.secondsToTempoObject(3700));
         String separator = "========================================"
                 + "========================================";
 

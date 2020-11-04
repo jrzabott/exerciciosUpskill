@@ -28,6 +28,7 @@ public class Tempo {
     private final String AM_STRING = "AM";
     private final String PM_STRING = "PM";
     private final String AMPM_FORMAT_STRING = "%02d:%02d:%02d %s";
+    private final String DEFAULT_FORMAT_STRING = "%02d:%02d:%02d %s";
 //    private final int SECONDS_TO_MINUTES_CONVERSION_FACTOR = 1 / 60;
 //    private final int SECONDS_TO_HOURS_CONVERSION_FACTOR = 1 / 3600;
 
@@ -118,7 +119,7 @@ public class Tempo {
 
     @Override
     public String toString() {
-        return String.format("%02d:%02d:%02d", getHh(), getMm(), getSs());
+        return String.format(DEFAULT_FORMAT_STRING, getHh(), getMm(), getSs());
     }
 
     /**
@@ -139,10 +140,10 @@ public class Tempo {
     /**
      *
      * @param t1
-     * @return true if param t1 is greater.
+     * @return FALSE if param t1 is greater.
      */
     public boolean isGreater(Tempo t1) {
-        return (convertTimeToSeconds(this) < convertTimeToSeconds(t1));
+        return (convertTimeToSeconds(this) > convertTimeToSeconds(t1));
     }
 
     /**
