@@ -23,18 +23,18 @@ public class TempoMain {
 //        t.tick();
 //        System.out.println(t);
 //
-//        t.setSs(59);
+//        t.setSegundo(59);
 //        t.tick();
 //        System.out.println(t);
 //
-//        t.setSs(59);
-//        t.setMm(59);
+//        t.setSegundo(59);
+//        t.setMinuto(59);
 //        t.tick();
 //        System.out.println(t);
 //
-//        t.setSs(59);
-//        t.setMm(59);
-//        t.setHh(23);
+//        t.setSegundo(59);
+//        t.setMinuto(59);
+//        t.setHora(23);
 //        t.tick();
 //        System.out.println(t);
 //

@@ -13,9 +13,9 @@ package upskill.exerciciotempo;
  */
 public class Tempo {
 
-    private int hh;
-    private int mm;
-    private int ss;
+    private int hora;
+    private int minuto;
+    private int segundo;
 
     private final int HH_DEFAULT = 0;
     private final int MM_DEFAULT = 0;
@@ -39,87 +39,87 @@ public class Tempo {
      * @param ss Constructor using the three time parameters, hour, min and sec.
      */
     public Tempo(int hh, int mm, int ss) {
-        this.hh = hh;
-        this.mm = mm;
-        this.ss = ss;
+        this.hora = hh;
+        this.minuto = mm;
+        this.segundo = ss;
     }
 
     /**
      *
      * @param hh
      * @param mm Constructor that uses only hour and min to return a Time -
-     * hh:mm:00
+ hora:minuto:00
      */
     public Tempo(int hh, int mm) {
-        this.hh = hh;
-        this.mm = mm;
-        this.ss = SS_DEFAULT;
+        this.hora = hh;
+        this.minuto = mm;
+        this.segundo = SS_DEFAULT;
     }
 
     /**
      *
-     * @param hh Constructor that uses only the hours to create a time. hh:00:00
+     * @param hh Constructor that uses only the hours to create a time. hora:00:00
      */
     public Tempo(int hh) {
-        this.hh = hh;
-        this.mm = MM_DEFAULT;
-        this.ss = SS_DEFAULT;
+        this.hora = hh;
+        this.minuto = MM_DEFAULT;
+        this.segundo = SS_DEFAULT;
     }
 
     /**
      * Constructor that uses defalut values: all zeroes 00:00:00
      */
     public Tempo() {
-        this.hh = HH_DEFAULT;
-        this.mm = MM_DEFAULT;
-        this.ss = SS_DEFAULT;
+        this.hora = HH_DEFAULT;
+        this.minuto = MM_DEFAULT;
+        this.segundo = SS_DEFAULT;
     }
 
     /**
-     * @return the hh
+     * @return the hora
      */
-    public int getHh() {
-        return hh;
+    public int getHora() {
+        return hora;
     }
 
     /**
-     * @return the mm
+     * @return the minuto
      */
-    public int getMm() {
-        return mm;
+    public int getMinuto() {
+        return minuto;
     }
 
     /**
-     * @return the ss
+     * @return the segundo
      */
-    public int getSs() {
-        return ss;
+    public int getSsegundo() {
+        return segundo;
     }
 
     /**
-     * @param hh the hh to set
+     * @param hh the hora to set
      */
-    public void setHh(int hh) {
-        this.hh = hh;
+    public void setHora(int hh) {
+        this.hora = hh;
     }
 
     /**
      * @param mm the minutes to set
      */
-    public void setMm(int mm) {
-        this.mm = mm;
+    public void setMinuto(int mm) {
+        this.minuto = mm;
     }
 
     /**
      * @param ss the seconds to set
      */
-    public void setSs(int ss) {
-        this.ss = ss;
+    public void setSegundo(int ss) {
+        this.segundo = ss;
     }
 
     @Override
     public String toString() {
-        return String.format(DEFAULT_FORMAT_STRING, getHh(), getMm(), getSs());
+        return String.format(DEFAULT_FORMAT_STRING, getHora(), getMinuto(), getSsegundo());
     }
 
     /**
@@ -128,10 +128,10 @@ public class Tempo {
     public void tick() {
         secondInc();
         // if after increment SECOND field is 0 add 1 to minute.
-        if (this.getSs() == 0) {
+        if (this.getSsegundo() == 0) {
             minuteInc();
             // if after min increment, MINUTE field is 0, add 1 to hour.
-            if (this.getMm() == 0) {
+            if (this.getMinuto() == 0) {
                 hourInc(); // if HOUR reaches 23 the next hour will be 00
             }
         }
@@ -199,16 +199,16 @@ public class Tempo {
      * forsmat
      */
     public String formatAMPM() {
-        String amPm = (this.getHh() >= HOURS_IN_AMPM_HOURS)
+        String amPm = (this.getHora() >= HOURS_IN_AMPM_HOURS)
                 ? PM_STRING
                 : AM_STRING;
 
-        int hour = (this.getHh() % HOURS_IN_AMPM_HOURS != 0)
-                ? this.getHh() % HOURS_IN_AMPM_HOURS
+        int hour = (this.getHora() % HOURS_IN_AMPM_HOURS != 0)
+                ? this.getHora() % HOURS_IN_AMPM_HOURS
                 : HOURS_IN_AMPM_HOURS;
 
-        return String.format(AMPM_FORMAT_STRING, hour, this.getMm(),
-                this.getSs(), amPm);
+        return String.format(AMPM_FORMAT_STRING, hour, this.getMinuto(),
+                this.getSsegundo(), amPm);
     }
 
     /**
@@ -217,9 +217,9 @@ public class Tempo {
      * @return the number seconds of a given hour:min:seg
      */
     public int convertTimeToSeconds(Tempo t) {
-        return convertHoursToSeconds(t.getHh())
-                + convertMinutesToSeconds(t.getMm())
-                + t.getSs();
+        return convertHoursToSeconds(t.getHora())
+                + convertMinutesToSeconds(t.getMinuto())
+                + t.getSsegundo();
     }
 
     /**
@@ -244,15 +244,15 @@ public class Tempo {
     }
 
     private void secondInc() {
-        this.setSs((this.getSs() + 1) % MINUTES_IN_SECONDS);
+        this.setSegundo((this.getSsegundo() + 1) % MINUTES_IN_SECONDS);
     }
 
     private void minuteInc() {
-        this.setMm((this.getMm() + 1) % HOUR_IN_MINUTES);
+        this.setMinuto((this.getMinuto() + 1) % HOUR_IN_MINUTES);
     }
 
     private void hourInc() {
-        this.setHh((this.getHh() + 1) % DAY_IN_HOURS);
+        this.setHora((this.getHora() + 1) % DAY_IN_HOURS);
     }
 
 }
