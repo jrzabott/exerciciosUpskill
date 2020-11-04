@@ -34,8 +34,7 @@ public class Tempo {
      *
      * @param hh
      * @param mm
-     * @param ss
-     * Constructor using the three time parameters, hour, min and sec.
+     * @param ss Constructor using the three time parameters, hour, min and sec.
      */
     public Tempo(int hh, int mm, int ss) {
         this.hh = hh;
@@ -46,8 +45,8 @@ public class Tempo {
     /**
      *
      * @param hh
-     * @param mm
-     * Constructor that uses only hour and min to return a Time - hh:mm:00
+     * @param mm Constructor that uses only hour and min to return a Time -
+     * hh:mm:00
      */
     public Tempo(int hh, int mm) {
         this.hh = hh;
@@ -57,8 +56,7 @@ public class Tempo {
 
     /**
      *
-     * @param hh
-     * Constructor that uses only the hours to create a time. hh:00:00
+     * @param hh Constructor that uses only the hours to create a time. hh:00:00
      */
     public Tempo(int hh) {
         this.hh = hh;
@@ -137,42 +135,6 @@ public class Tempo {
         }
     }
 
-    private void secondInc() {
-        this.setSs((this.getSs() + 1) % MINUTES_IN_SECONDS);
-    }
-
-    private void minuteInc() {
-        this.setMm((this.getMm() + 1) % HOUR_IN_MINUTES);
-    }
-
-    private void hourInc() {
-        this.setHh((this.getHh() + 1) % DAY_IN_HOURS);
-    }
-
-    /**
-     *
-     * @param t
-     * @return the number seconds of a given hour:min:seg
-     */
-    public int convertTimeToSeconds(Tempo t) {
-        return t.getHh() * HOUR_IN_SECONDS
-                + t.getMm() * MINUTES_IN_SECONDS
-                + t.getSs();
-    }
-
-    /**
-     *
-     * @param h - hours to be converted to sec
-     * @param m - mintes to be cnoverted to sec
-     * @param s - will be added to the end
-     * @return the number of seconde of a given time.
-     */
-    public int convertHourMinutesAndSecondsToSeconds(int h, int m, int s) {
-        return h * HOUR_IN_SECONDS
-                + m * MINUTES_IN_SECONDS
-                + s;
-    }
-
     /**
      *
      * @param t1
@@ -231,7 +193,8 @@ public class Tempo {
 
     /**
      *
-     * @return a String of the current Time in [1-12]:[0-59]:[0-59] AM-PM forsmat
+     * @return a String of the current Time in [1-12]:[0-59]:[0-59] AM-PM
+     * forsmat
      */
     public String formatAMPM() {
         String amPm = (this.getHh() >= HOURS_IN_AMPM_HOURS)
@@ -244,6 +207,50 @@ public class Tempo {
 
         return String.format("%02d:%02d:%02d %s", hour, this.getMm(),
                 this.getSs(), amPm);
+    }
+
+    /**
+     *
+     * @param t
+     * @return the number seconds of a given hour:min:seg
+     */
+    public int convertTimeToSeconds(Tempo t) {
+        return convertHoursToSeconds(getHh())
+                + convertMinutesToSeconds(this.getMm())
+                + t.getSs();
+    }
+
+    /**
+     *
+     * @param h - hours to be converted to sec
+     * @param m - mintes to be cnoverted to sec
+     * @param s - will be added to the end
+     * @return the number of seconde of a given time.
+     */
+    public int convertHourMinutesAndSecondsToSeconds(int h, int m, int s) {
+        return convertHoursToSeconds(h)
+                + convertMinutesToSeconds(m)
+                + s;
+    }
+
+    private int convertHoursToSeconds(int hours) {
+        return hours * HOUR_IN_SECONDS;
+    }
+
+    private int convertMinutesToSeconds(int minutes) {
+        return minutes * MINUTES_IN_SECONDS;
+    }
+
+    private void secondInc() {
+        this.setSs((this.getSs() + 1) % MINUTES_IN_SECONDS);
+    }
+
+    private void minuteInc() {
+        this.setMm((this.getMm() + 1) % HOUR_IN_MINUTES);
+    }
+
+    private void hourInc() {
+        this.setHh((this.getHh() + 1) % DAY_IN_HOURS);
     }
 
 }
