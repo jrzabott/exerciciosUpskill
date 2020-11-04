@@ -27,6 +27,7 @@ public class Tempo {
     private final int HOURS_IN_AMPM_HOURS = 12;
     private final String AM_STRING = "AM";
     private final String PM_STRING = "PM";
+    private final String AMPM_FORMAT_STRING = "%02d:%02d:%02d %s";
 //    private final int SECONDS_TO_MINUTES_CONVERSION_FACTOR = 1 / 60;
 //    private final int SECONDS_TO_HOURS_CONVERSION_FACTOR = 1 / 3600;
 
@@ -205,7 +206,7 @@ public class Tempo {
                 ? this.getHh() % HOURS_IN_AMPM_HOURS
                 : HOURS_IN_AMPM_HOURS;
 
-        return String.format("%02d:%02d:%02d %s", hour, this.getMm(),
+        return String.format(AMPM_FORMAT_STRING, hour, this.getMm(),
                 this.getSs(), amPm);
     }
 
