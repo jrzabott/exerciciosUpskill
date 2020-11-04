@@ -215,8 +215,8 @@ public class Tempo {
      * @return the number seconds of a given hour:min:seg
      */
     public int convertTimeToSeconds(Tempo t) {
-        return convertHoursToSeconds(getHh())
-                + convertMinutesToSeconds(this.getMm())
+        return convertHoursToSeconds(t.getHh())
+                + convertMinutesToSeconds(t.getMm())
                 + t.getSs();
     }
 
