@@ -59,14 +59,11 @@ public class CredAutomovel extends CreditosBancariosConsumo {
 // THIS TEST IS TO KEEP IF THE INTEREST SHOULD BE APPLIED ONTO THE MONTHLY PAYMENTS.        
         if (getPrazoFinanciamentoMeses() <= getMesesParaAplicarDesconto()) {
             prestacaoMensal = ((capitalDevido * txJurosMes) + getValorASerAmortizadoMes()) * (1 - getTaxaDeDescCredMenQue24Meses() / FACTOR_PERCENTAGEM);
-            System.out.println("Com Desconto de 1%:" + prestacaoMensal);
         } else {
             prestacaoMensal = (capitalDevido * txJurosMes) + getValorASerAmortizadoMes();
-            System.out.println("Sem Desconto:" + prestacaoMensal);
         }
 
         return prestacaoMensal - getValorASerAmortizadoMes();
-//        return capitalDevido * txJurosMes;
     }
 
     @Override

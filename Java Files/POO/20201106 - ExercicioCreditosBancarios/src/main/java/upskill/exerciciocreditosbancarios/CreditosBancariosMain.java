@@ -20,7 +20,7 @@ public class CreditosBancariosMain {
                - 2 créditos à habitação;
                - 2 créditos automóvel;
                - 2 créditos à educação;
-        */
+         */
 
         CredHabitacao ch1 = new CredHabitacao("Daniel Junior", "Desempregado", 120000, 20, 500, 1);
         System.out.println(ch1.calcularMontanteJuros());
@@ -45,11 +45,11 @@ public class CreditosBancariosMain {
         CredEducacao ce2 = new CredEducacao("Junior", "Desempregado", 36000, 60, 600, 2, 24);
         System.out.println(ce2.calcularMontanteJuros());
         System.out.println(ce2.calcularMontanteAReceberPorCadaCredito());
-        
+
 
         /*
             b) Criação de um contentor do tipo array e armazenamento no mesmo das instâncias criadas;
-        */ 
+         */
         CreditosBancarios[] cb = new CreditosBancarios[10];
         cb[0] = ch1;
         cb[1] = ch2;
@@ -60,12 +60,69 @@ public class CreditosBancariosMain {
 
         /*
             c)  Criação de listagens separadas, sobre o contentor, para:
-                obter o nome do cliente e o valor que a instituição bancária irá receber até ao final
+                1. obter o nome do cliente e o valor que a instituição bancária irá receber até ao final
                 de cada contrato de crédito ao consumo realizado;
-                obter o nome do cliente e o valor dos juros (para além do montante do empréstimo)
+                2. obter o nome do cliente e o valor dos juros (para além do montante do empréstimo)
                 que o cliente terá de pagar até ao final de cada contrato de crédito bancário
                 realizado;
         
-        */
-        
+         */
+        System.out.println("===============================================================\n"
+                + "1. obter o nome do cliente e o valor que a instituição bancária irá receber até ao final"
+                + "\nde cada contrato de crédito ao consumo realizado;"
+                + "\n-------------------------------------------------------------------");
+        for (CreditosBancarios c : cb) {
+            if (c != null) {
+                System.out.println(
+                        String.format("Nome Cliente: %s, Valor Recebido pela Inst Banc: %.2f",
+                                c.getNomeCliente(),
+                                c.calcularMontanteAReceberPorCadaCredito()
+                        )
+                );
+            }
+        }
+        System.out.println("================================================================\n"
+                + "2. obter o nome do cliente e o valor dos juros (para além do montante do empréstimo)\n"
+                + "que o cliente terá de pagar até ao final de cada contrato de crédito bancário "
+                + "realizado;\n---------------------------------------------------------------");
+        for (CreditosBancarios c : cb) {
+            if (c != null) {
+                System.out.println(
+                        String.format("Nome Cliente: %s, Juros: %.2f, Montante Solicitado: %.2f",
+                                c.getNomeCliente(),
+                                c.calcularMontanteJuros(),
+                                c.calcularMontanteJuros()
+                        )
+                );
+            }
+        }
+        System.out.println("d) Apresentação das quantidades de instâncias de créditos à habitação e de créditos ao\n"
+                + "consumo criadas (em separado), sem percorrer o contentor;");
+
+        System.out.println(String.format(
+                "Cred Hab: %d, Cred Auto: %d, Cred Ed: %d%nTotal Cred Consumo: "
+                + "%d, Total Creditos: %d",
+                CredHabitacao.getCountCredHabitacao(),
+                CredAutomovel.getCountCredAuto(),
+                CredEducacao.getCountCredEducacao(),
+                CreditosBancariosConsumo.getCountCredConsumo(),
+                CreditosBancariosConsumo.getCountCreditosBancarios()
+        ));
+        System.out.println("============================================================"
+                + "\ne) Cálculo e apresentação do valor total e dos respetivos juros que a instituição bancária irá\n"
+                + "receber por todos os créditos bancários realizados, percorrendo apenas uma vez o contentor."
+                + "\n-------------------------------------------------------------");
+        double somaJuros = 0.0, somaMontante = 0.0;
+        for (CreditosBancarios c : cb) {
+            if (c != null) {
+                somaJuros += c.calcularMontanteJuros();
+                somaMontante += c.calcularMontanteAReceberPorCadaCredito();
+
+            }
+        }
+        System.out.println(String.format(
+                "Valor Total Juros: %.2f, Montante Total a Receber: %.2f", 
+                somaJuros, somaMontante
+        ));
     }
+}

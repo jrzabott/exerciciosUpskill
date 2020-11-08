@@ -39,4 +39,8 @@ public abstract class CreditosBancariosConsumo extends CreditosBancarios {
         return "CreditosBancariosConsumo{" + "taxaDeJurosAnual=" + getClass().getCanonicalName() + '}' + super.toString();
     }
 
+    public static int getCountCredConsumo() {
+        return CredEducacao.getCountCredEducacao() + CredAutomovel.getCountCredAuto();
+    }
+
 }
