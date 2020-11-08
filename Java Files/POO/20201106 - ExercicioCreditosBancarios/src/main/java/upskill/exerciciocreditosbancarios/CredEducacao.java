@@ -11,20 +11,26 @@ package upskill.exerciciocreditosbancarios;
  */
 public class CredEducacao extends CreditosBancariosConsumo {
 
-    private double periodoDeCarencia = 24.0;
+    private double periodoDeCarencia;
+    
+    private final double PERIODO_DE_CARENCIA_DEFAULT = 24.0;
 
-    private static double taxaJurosAnual = 2.0;
+    private static int countCredEducacao = 0;
 
-    public CredEducacao(String nomeCliente, String profissao, double montanteSolicitado, int prazoFinanciamentoMeses, double valorASerAmortizadoMes) {
-        super(nomeCliente, profissao, montanteSolicitado, prazoFinanciamentoMeses, valorASerAmortizadoMes);
+    public CredEducacao(String nomeCliente, String profissao, double montanteSolicitado, int prazoFinanciamentoMeses, double valorASerAmortizadoMes, double taxaDeJurosAnual, double periodoDeCarencia) {
+        super(nomeCliente, profissao, montanteSolicitado, prazoFinanciamentoMeses, valorASerAmortizadoMes, taxaDeJurosAnual);
+        this.periodoDeCarencia = periodoDeCarencia;
+        countCredEducacao++;
     }
 
     public CredEducacao() {
         super();
+        this.periodoDeCarencia = PERIODO_DE_CARENCIA_DEFAULT;
+        countCredEducacao++;
     }
 
     private double calcularMontanteJurosMes(double capitalDevido) {
-        double txJurosMes = getTaxaJurosAnual()
+        double txJurosMes = CreditosBancariosConsumo.getTaxaDeJurosAnual()
                 / CreditosBancarios.FACTOR_PERCENTAGEM
                 / CreditosBancarios.MESES_POR_ANO;
         return capitalDevido * txJurosMes;
@@ -70,17 +76,17 @@ public class CredEducacao extends CreditosBancariosConsumo {
     }
 
     /**
-     * @return the taxaJurosAnual
+     * @return the countCredEducacao
      */
-    public static double getTaxaJurosAnual() {
-        return taxaJurosAnual;
+    public static int getCountCredEducacao() {
+        return countCredEducacao;
     }
 
     /**
-     * @param aTaxaJurosAnual the taxaJurosAnual to set
+     * @param aCountCredEducacao the countCredEducacao to set
      */
-    public static void setTaxaJurosAnual(double aTaxaJurosAnual) {
-        taxaJurosAnual = aTaxaJurosAnual;
+    public static void setCountCredEducacao(int aCountCredEducacao) {
+        countCredEducacao = aCountCredEducacao;
     }
 
 }

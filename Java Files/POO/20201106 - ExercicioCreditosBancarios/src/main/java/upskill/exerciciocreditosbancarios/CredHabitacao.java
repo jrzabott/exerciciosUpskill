@@ -16,6 +16,7 @@ public class CredHabitacao extends CreditosBancarios {
     private final double SPREAD_DEFAULT = 0;
 
     private static double taxaEuribor12meses = 0.1;
+    private static int countCredHabitacao = 0;
 
     public CredHabitacao(
             String nomeCliente,
@@ -33,11 +34,13 @@ public class CredHabitacao extends CreditosBancarios {
                 valorASerAmortizadoMes
         );
         this.spread = spread;
+        countCredHabitacao++;
     }
 
     public CredHabitacao() {
         super();
         this.spread = SPREAD_DEFAULT;
+        countCredHabitacao++;
     }
 
     /**
@@ -85,12 +88,26 @@ public class CredHabitacao extends CreditosBancarios {
     public static double getTaxaEuribor12meses() {
         return taxaEuribor12meses;
     }
+    /**
+     * @return the countCredHabitacao
+     */
+    public static int getCountCredHabitacao() {
+        return countCredHabitacao;
+    }
 
+    /**
+     * @param aCountCredHabitacao the countCredHabitacao to set
+     */
+    public static void setCountCredHabitacao(int aCountCredHabitacao) {
+        countCredHabitacao = aCountCredHabitacao;
+    }
     /**
      * @param aTaxaEuribor12meses the taxaEuribor12meses to set
      */
     public static void setTaxaEuribor12meses(double aTaxaEuribor12meses) {
         taxaEuribor12meses = aTaxaEuribor12meses;
     }
+
+
 
 }

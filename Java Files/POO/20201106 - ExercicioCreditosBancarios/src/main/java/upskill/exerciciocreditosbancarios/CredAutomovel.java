@@ -12,28 +12,37 @@ package upskill.exerciciocreditosbancarios;
 public class CredAutomovel extends CreditosBancariosConsumo {
 
     private double taxaDeDescCredMenQue24Meses = 1.0;
+    
+    private final double TAXA_DE_DESC_CRED_MEN_QUE_24_MESES_DEFAULT = 1.0;
 
-    private static double taxaJurosAnual = 6.0;
     private static double mesesParaAplicarDesconto = 24.0;
+    private static int countCredAuto = 0;
 
     public CredAutomovel(
             String nomeCliente,
             String profissao,
             double montanteSolicitado,
             int prazoFinanciamentoMeses,
-            double valorASerAmortizadoMes
+            double valorASerAmortizadoMes,
+            double taxaDeJurosAnual,
+            double taxaDeDescCredMenQue24Meses
     ) {
         super(
                 nomeCliente,
                 profissao,
                 montanteSolicitado,
                 prazoFinanciamentoMeses,
-                valorASerAmortizadoMes
+                valorASerAmortizadoMes,
+                taxaDeJurosAnual
         );
+        this.taxaDeDescCredMenQue24Meses = taxaDeDescCredMenQue24Meses;
+        countCredAuto++;
     }
 
     public CredAutomovel() {
         super();
+        this.taxaDeDescCredMenQue24Meses = TAXA_DE_DESC_CRED_MEN_QUE_24_MESES_DEFAULT;
+        countCredAuto++;
     }
 
     @Override
@@ -42,10 +51,22 @@ public class CredAutomovel extends CreditosBancariosConsumo {
     }
 
     private double calcularMontanteJurosMes(double capitalDevido) {
-        double txJurosMes = getTaxaJurosAnual()
+        double txJurosMes = CreditosBancariosConsumo.getTaxaDeJurosAnual()
                 / CreditosBancarios.FACTOR_PERCENTAGEM
                 / CreditosBancarios.MESES_POR_ANO;
-        return capitalDevido * txJurosMes;
+        double prestacaoMensal;
+
+// THIS TEST IS TO KEEP IF THE INTEREST SHOULD BE APPLIED ONTO THE MONTHLY PAYMENTS.        
+        if (getPrazoFinanciamentoMeses() <= getMesesParaAplicarDesconto()) {
+            prestacaoMensal = ((capitalDevido * txJurosMes) + getValorASerAmortizadoMes()) * (1 - getTaxaDeDescCredMenQue24Meses() / FACTOR_PERCENTAGEM);
+            System.out.println("Com Desconto de 1%:" + prestacaoMensal);
+        } else {
+            prestacaoMensal = (capitalDevido * txJurosMes) + getValorASerAmortizadoMes();
+            System.out.println("Sem Desconto:" + prestacaoMensal);
+        }
+
+        return prestacaoMensal - getValorASerAmortizadoMes();
+//        return capitalDevido * txJurosMes;
     }
 
     @Override
@@ -56,11 +77,13 @@ public class CredAutomovel extends CreditosBancariosConsumo {
 
 //        System.out.println(somaJuros + " | " + montanteDevido);
         while (montanteDevido > 0.0) {
-            if (getPrazoFinanciamentoMeses() <= mesesParaAplicarDesconto) {
-                somaJuros += (calcularMontanteJurosMes(montanteDevido) - (calcularMontanteJurosMes(montanteDevido) * 0.01));
-            } else {
-                somaJuros += calcularMontanteJurosMes(montanteDevido);
-            }
+// IF THE DISCOUNT IS ABOVE THE INTEREST, OTHERWISE KEEP TEST ABOVE
+//            if (getPrazoFinanciamentoMeses() <= mesesParaAplicarDesconto) {
+//                somaJuros += (calcularMontanteJurosMes(montanteDevido) - (calcularMontanteJurosMes(montanteDevido) * 0.01));
+//            } else {
+//                somaJuros += calcularMontanteJurosMes(montanteDevido);
+//            }
+            somaJuros += calcularMontanteJurosMes(montanteDevido);
             montanteDevido -= montanteMensalAmortizado;
 //            System.out.println(somaJuros + " | " + montanteDevido);
         }
@@ -87,24 +110,24 @@ public class CredAutomovel extends CreditosBancariosConsumo {
     }
 
     /**
+     * @return the countCredAuto
+     */
+    public static int getCountCredAuto() {
+        return countCredAuto;
+    }
+
+    /**
+     * @param aCountCredAuto the countCredAuto to set
+     */
+    public static void setCountCredAuto(int aCountCredAuto) {
+        countCredAuto = aCountCredAuto;
+    }
+
+    /**
      * @param taxaDeDescCredMenQue24Meses the taxaDeDescCredMenQue24Meses to set
      */
     public void setTaxaDeDescCredMenQue24Meses(double taxaDeDescCredMenQue24Meses) {
         this.taxaDeDescCredMenQue24Meses = taxaDeDescCredMenQue24Meses;
-    }
-
-    /**
-     * @return the taxaJurosAnual
-     */
-    public static double getTaxaJurosAnual() {
-        return taxaJurosAnual;
-    }
-
-    /**
-     * @param aTaxaJurosAnual the taxaJurosAnual to set
-     */
-    public static void setTaxaJurosAnual(double aTaxaJurosAnual) {
-        taxaJurosAnual = aTaxaJurosAnual;
     }
 
     /**

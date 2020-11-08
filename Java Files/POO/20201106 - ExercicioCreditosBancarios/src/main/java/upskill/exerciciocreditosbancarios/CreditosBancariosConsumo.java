@@ -9,21 +9,34 @@ package upskill.exerciciocreditosbancarios;
  *
  * @author user
  */
-public abstract class CreditosBancariosConsumo extends CreditosBancarios{
+public abstract class CreditosBancariosConsumo extends CreditosBancarios {
 
-    public CreditosBancariosConsumo(String nomeCliente, String profissao, double montanteSolicitado, int prazoFinanciamentoMeses, double valorASerAmortizadoMes) {
+    private static double taxaDeJurosAnual;
+
+    private static final double TAXA_DE_JUROS_ANUAL_DEFAULT = 0.0;
+
+    public CreditosBancariosConsumo(String nomeCliente, String profissao, double montanteSolicitado, int prazoFinanciamentoMeses, double valorASerAmortizadoMes, double taxaDeJurosAnual) {
         super(nomeCliente, profissao, montanteSolicitado, prazoFinanciamentoMeses, valorASerAmortizadoMes);
+        this.taxaDeJurosAnual = taxaDeJurosAnual;
     }
-    
+
     public CreditosBancariosConsumo() {
         super();
+        this.taxaDeJurosAnual = TAXA_DE_JUROS_ANUAL_DEFAULT;
+
+    }
+
+    public static double getTaxaDeJurosAnual() {
+        return taxaDeJurosAnual;
+    }
+
+    public static void setTaxaDeJurosAnual(double taxaDeJurosAnual) {
+        CreditosBancariosConsumo.taxaDeJurosAnual = taxaDeJurosAnual;
     }
 
     @Override
     public String toString() {
-        return "CreditosBancariosConsumo{" + '}' + super.toString();
+        return "CreditosBancariosConsumo{" + "taxaDeJurosAnual=" + getClass().getCanonicalName() + '}' + super.toString();
     }
-    
-    
-        
+
 }
