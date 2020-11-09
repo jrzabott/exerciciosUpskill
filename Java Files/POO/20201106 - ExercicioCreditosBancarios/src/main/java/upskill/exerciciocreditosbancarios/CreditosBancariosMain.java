@@ -68,7 +68,7 @@ public class CreditosBancariosMain {
         
          */
         System.out.println("===============================================================\n"
-                + "1. obter o nome do cliente e o valor que a instituição bancária irá receber até ao final"
+                + "c)\n1. obter o nome do cliente e o valor que a instituição bancária irá receber até ao final"
                 + "\nde cada contrato de crédito ao consumo realizado;"
                 + "\n-------------------------------------------------------------------");
         for (CreditosBancarios c : cb) {
@@ -82,7 +82,7 @@ public class CreditosBancariosMain {
             }
         }
         System.out.println("================================================================\n"
-                + "2. obter o nome do cliente e o valor dos juros (para além do montante do empréstimo)\n"
+                + "c)\n2. obter o nome do cliente e o valor dos juros (para além do montante do empréstimo)\n"
                 + "que o cliente terá de pagar até ao final de cada contrato de crédito bancário "
                 + "realizado;\n---------------------------------------------------------------");
         for (CreditosBancarios c : cb) {
@@ -96,6 +96,7 @@ public class CreditosBancariosMain {
                 );
             }
         }
+        System.out.println("================================================================");
         System.out.println("d) Apresentação das quantidades de instâncias de créditos à habitação e de créditos ao\n"
                 + "consumo criadas (em separado), sem percorrer o contentor;");
 
