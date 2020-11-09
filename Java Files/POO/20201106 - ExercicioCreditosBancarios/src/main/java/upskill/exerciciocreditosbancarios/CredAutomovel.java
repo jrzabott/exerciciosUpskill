@@ -12,7 +12,9 @@ package upskill.exerciciocreditosbancarios;
 public class CredAutomovel extends CreditosBancariosConsumo {
 
     private double taxaDeDescCredMenQue24Meses = 1.0;
-    
+    private double taxaDeJurosAnual;
+
+    private final double TAXA_DE_JUROS_ANUAL_DEFAULT = 0.0;
     private final double TAXA_DE_DESC_CRED_MEN_QUE_24_MESES_DEFAULT = 1.0;
 
     private static double mesesParaAplicarDesconto = 24.0;
@@ -32,16 +34,17 @@ public class CredAutomovel extends CreditosBancariosConsumo {
                 profissao,
                 montanteSolicitado,
                 prazoFinanciamentoMeses,
-                valorASerAmortizadoMes,
-                taxaDeJurosAnual
+                valorASerAmortizadoMes
         );
         this.taxaDeDescCredMenQue24Meses = taxaDeDescCredMenQue24Meses;
+        this.taxaDeJurosAnual = taxaDeJurosAnual;
         countCredAuto++;
     }
 
     public CredAutomovel() {
         super();
         this.taxaDeDescCredMenQue24Meses = TAXA_DE_DESC_CRED_MEN_QUE_24_MESES_DEFAULT;
+        this.taxaDeJurosAnual = TAXA_DE_JUROS_ANUAL_DEFAULT;
         countCredAuto++;
     }
 
@@ -51,7 +54,7 @@ public class CredAutomovel extends CreditosBancariosConsumo {
     }
 
     private double calcularMontanteJurosMes(double capitalDevido) {
-        double txJurosMes = CreditosBancariosConsumo.getTaxaDeJurosAnual()
+        double txJurosMes = getTaxaDeJurosAnual()
                 / CreditosBancarios.FACTOR_PERCENTAGEM
                 / CreditosBancarios.MESES_POR_ANO;
         double prestacaoMensal;
@@ -97,6 +100,20 @@ public class CredAutomovel extends CreditosBancariosConsumo {
      */
     public double getTaxaDeDescCredMenQue24Meses() {
         return taxaDeDescCredMenQue24Meses;
+    }
+
+    /**
+     * @return the taxaDeJurosAnual
+     */
+    public double getTaxaDeJurosAnual() {
+        return taxaDeJurosAnual;
+    }
+
+    /**
+     * @param taxaDeJurosAnual the taxaDeJurosAnual to set
+     */
+    public void setTaxaDeJurosAnual(double taxaDeJurosAnual) {
+        this.taxaDeJurosAnual = taxaDeJurosAnual;
     }
 
     /**

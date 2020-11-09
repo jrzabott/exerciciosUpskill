@@ -37,15 +37,14 @@ public class CreditosBancariosMain {
         CredAutomovel ca2 = new CredAutomovel("Junior", "Desempregado", 20000, 20, 1000, 6, 1);
         System.out.println(ca2.calcularMontanteJuros());
         System.out.println(ca2.calcularMontanteAReceberPorCadaCredito());
-
+        
         CredEducacao ce1 = new CredEducacao("Daniel Junior", "Desempregado", 18000, 60, 500, 2, 24);
         System.out.println(ce1.calcularMontanteJuros());
         System.out.println(ce1.calcularMontanteAReceberPorCadaCredito());
-
+        
         CredEducacao ce2 = new CredEducacao("Junior", "Desempregado", 36000, 60, 600, 2, 24);
         System.out.println(ce2.calcularMontanteJuros());
         System.out.println(ce2.calcularMontanteAReceberPorCadaCredito());
-
 
         /*
             b) Criação de um contentor do tipo array e armazenamento no mesmo das instâncias criadas;
@@ -91,7 +90,7 @@ public class CreditosBancariosMain {
                         String.format("Nome Cliente: %s, Juros: %.2f, Montante Solicitado: %.2f",
                                 c.getNomeCliente(),
                                 c.calcularMontanteJuros(),
-                                c.calcularMontanteJuros()
+                                c.getMontanteSolicitado()
                         )
                 );
             }

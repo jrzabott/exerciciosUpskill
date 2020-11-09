@@ -12,13 +12,21 @@ package upskill.exerciciocreditosbancarios;
 public class CredEducacao extends CreditosBancariosConsumo {
 
     private double periodoDeCarencia;
-    
+    private double taxaDeJurosAnual;
+
+    private final double TAXA_DE_JUROS_ANUAL_DEFAULT = 0.0;
     private final double PERIODO_DE_CARENCIA_DEFAULT = 24.0;
 
     private static int countCredEducacao = 0;
 
-    public CredEducacao(String nomeCliente, String profissao, double montanteSolicitado, int prazoFinanciamentoMeses, double valorASerAmortizadoMes, double taxaDeJurosAnual, double periodoDeCarencia) {
-        super(nomeCliente, profissao, montanteSolicitado, prazoFinanciamentoMeses, valorASerAmortizadoMes, taxaDeJurosAnual);
+//    public CredEducacao(String nomeCliente, String profissao, double montanteSolicitado, int prazoFinanciamentoMeses, double valorASerAmortizadoMes, double taxaDeJurosAnual, double periodoDeCarencia) {
+//        super(nomeCliente, profissao, montanteSolicitado, prazoFinanciamentoMeses, valorASerAmortizadoMes, taxaDeJurosAnual);
+//        this.periodoDeCarencia = periodoDeCarencia;
+//        countCredEducacao++;
+//    }
+    public CredEducacao(String nomeCliente, String profissao, double montanteSolicitado, int prazoFinanciamentoMeses, double valorASerAmortizadoMes,  double taxaDeJurosAnual, double periodoDeCarencia) {
+        super(nomeCliente, profissao, montanteSolicitado, prazoFinanciamentoMeses, valorASerAmortizadoMes);
+        this.taxaDeJurosAnual = taxaDeJurosAnual;
         this.periodoDeCarencia = periodoDeCarencia;
         countCredEducacao++;
     }
@@ -30,7 +38,7 @@ public class CredEducacao extends CreditosBancariosConsumo {
     }
 
     private double calcularMontanteJurosMes(double capitalDevido) {
-        double txJurosMes = CreditosBancariosConsumo.getTaxaDeJurosAnual()
+        double txJurosMes = getTaxaDeJurosAnual()
                 / CreditosBancarios.FACTOR_PERCENTAGEM
                 / CreditosBancarios.MESES_POR_ANO;
         return capitalDevido * txJurosMes;
@@ -68,6 +76,19 @@ public class CredEducacao extends CreditosBancariosConsumo {
         return periodoDeCarencia;
     }
 
+    /**
+     * @return the taxaDeJurosAnual
+     */
+    public double getTaxaDeJurosAnual() {
+        return taxaDeJurosAnual;
+    }
+
+    /**
+     * @param taxaDeJurosAnual the taxaDeJurosAnual to set
+     */
+    public void setTaxaDeJurosAnual(double taxaDeJurosAnual) {
+        this.taxaDeJurosAnual = taxaDeJurosAnual;
+    }
     /**
      * @param periodoDeCarencia the periodoDeCarencia to set
      */
