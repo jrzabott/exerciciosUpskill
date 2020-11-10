@@ -12,11 +12,11 @@ package upskill.exerciciocreditosbancarios;
 public class CredAutomovel extends CreditosBancariosConsumo {
 
     private double taxaDeDescCredMenQue24Meses = 1.0;
-    private double taxaDeJurosAnual;
 
     private final double TAXA_DE_JUROS_ANUAL_DEFAULT = 0.0;
     private final double TAXA_DE_DESC_CRED_MEN_QUE_24_MESES_DEFAULT = 1.0;
 
+    private static double taxaDeJurosAnual = 6.0;
     private static double mesesParaAplicarDesconto = 24.0;
     private static int countCredAuto = 0;
 
@@ -37,14 +37,12 @@ public class CredAutomovel extends CreditosBancariosConsumo {
                 valorASerAmortizadoMes
         );
         this.taxaDeDescCredMenQue24Meses = taxaDeDescCredMenQue24Meses;
-        this.taxaDeJurosAnual = taxaDeJurosAnual;
         countCredAuto++;
     }
 
     public CredAutomovel() {
         super();
         this.taxaDeDescCredMenQue24Meses = TAXA_DE_DESC_CRED_MEN_QUE_24_MESES_DEFAULT;
-        this.taxaDeJurosAnual = TAXA_DE_JUROS_ANUAL_DEFAULT;
         countCredAuto++;
     }
 
@@ -103,20 +101,6 @@ public class CredAutomovel extends CreditosBancariosConsumo {
     }
 
     /**
-     * @return the taxaDeJurosAnual
-     */
-    public double getTaxaDeJurosAnual() {
-        return taxaDeJurosAnual;
-    }
-
-    /**
-     * @param taxaDeJurosAnual the taxaDeJurosAnual to set
-     */
-    public void setTaxaDeJurosAnual(double taxaDeJurosAnual) {
-        this.taxaDeJurosAnual = taxaDeJurosAnual;
-    }
-
-    /**
      * @return the mesesParaAplicarDesconto
      */
     public static double getMesesParaAplicarDesconto() {
@@ -128,6 +112,20 @@ public class CredAutomovel extends CreditosBancariosConsumo {
      */
     public static int getCountCredAuto() {
         return countCredAuto;
+    }
+
+    /**
+     * @return the taxaDeJurosAnual
+     */
+    public static double getTaxaDeJurosAnual() {
+        return taxaDeJurosAnual;
+    }
+
+    /**
+     * @param taxaDeJurosAnual the taxaDeJurosAnual to set
+     */
+    public static void setTaxaDeJurosAnual(double taxaDeJurosAnual) {
+        CredAutomovel.taxaDeJurosAnual = taxaDeJurosAnual;
     }
 
     /**

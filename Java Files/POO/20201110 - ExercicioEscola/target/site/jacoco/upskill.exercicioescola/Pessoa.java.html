@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pessoa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">20201110-ExercicioEscola</a> &gt; <a href="index.source.html" class="el_package">upskill.exercicioescola</a> &gt; <span class="el_source">Pessoa.java</span></div><h1>Pessoa.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package upskill.exercicioescola;
+
+/**
+ *
+ * @author user
+ */
+public abstract class Pessoa {
+
+    private String nome;
+    private int idCivil;
+
+    private static final String NOME_DEFAULT = &quot;XXX&quot;;
+    private static final int ID_CIVIL_DEFAULT = 0;
+
+<span class="fc" id="L20">    public Pessoa(String nome, int idCivil) {</span>
+<span class="fc" id="L21">        this.nome = nome;</span>
+<span class="fc" id="L22">        this.idCivil = idCivil;</span>
+<span class="fc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public Pessoa() {</span>
+<span class="nc" id="L26">        this.nome = NOME_DEFAULT;</span>
+<span class="nc" id="L27">        this.idCivil = ID_CIVIL_DEFAULT;</span>
+<span class="nc" id="L28">    }</span>
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+<span class="nc" id="L34">        return nome;</span>
+    }
+
+    /**
+     * @return the idCivil
+     */
+    public int getIdCivil() {
+<span class="nc" id="L41">        return idCivil;</span>
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+<span class="nc" id="L48">        this.nome = nome;</span>
+<span class="nc" id="L49">    }</span>
+
+    /**
+     * @param idCivil the idCivil to set
+     */
+    public void setIdCivil(int idCivil) {
+<span class="nc" id="L55">        this.idCivil = idCivil;</span>
+<span class="nc" id="L56">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L60">        return &quot;Pessoa{&quot; + &quot;nome=&quot; + nome + &quot;, idCivil=&quot; + idCivil + '}';</span>
+    }
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

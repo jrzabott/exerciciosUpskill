@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+20201110-ExercicioEscola,upskill.exercicioescola,AlunoBolsista,25,0,0,0,10,0,5,0,5,0
+20201110-ExercicioEscola,upskill.exercicioescola,Pessoa,40,9,0,0,11,4,6,1,6,1
+20201110-ExercicioEscola,upskill.exercicioescola,Aluno,36,0,0,0,10,0,5,0,5,0
+20201110-ExercicioEscola,upskill.exercicioescola,EscolaMain,4,0,0,0,2,0,2,0,2,0
+20201110-ExercicioEscola,upskill.exercicioescola,Professor,37,90,5,9,14,21,12,12,7,8
