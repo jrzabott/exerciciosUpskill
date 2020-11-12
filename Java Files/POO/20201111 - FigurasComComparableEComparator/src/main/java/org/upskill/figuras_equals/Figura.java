@@ -25,17 +25,16 @@ public abstract class Figura  {
         return String.format("Cor: %s", cor);
     }
     
-//    @Override
-//    public boolean equals(Object outroObjeto) {
-//        if (this == outroObjeto) {
-//            return true;
-//        }
-//        if (outroObjeto == null || this.getClass() != outroObjeto.getClass()) {
-//            return false;
-//        }
+    @Override
+    public boolean equals(Object outroObjeto) {
+        // rewriting ISEP equals function.
+        if (this != outroObjeto && outroObjeto == null && this.getClass() != outroObjeto.getClass()) {
+            return false;
+        }
 //        Figura outraFigura = (Figura) outroObjeto;
 //        return this.cor.equalsIgnoreCase(outraFigura.cor);
-//    }
+        return this.cor.equalsIgnoreCase(((Figura)outroObjeto).getCor());
+    }
     
     public abstract double calcularArea();
 }

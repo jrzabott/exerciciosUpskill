@@ -17,17 +17,20 @@ public class lixoMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+//        ArrayList<Double> myAL = new ArrayList<Double>();
         ArrayList<Double> myAL = new ArrayList<Double>();
-        myAL.add(1.0);
-        myAL.add(10.0);
-        myAL.add(100.0);
-        myAL.add(103.0);
-        
-        
-        myAL.removeIf((t) -> {
-            return (t % 5 == 0);
-        });
-        System.out.println(myAL);
+//        myAL.add(1.0);
+//        myAL.add(10.0);
+//        myAL.add(100.0);
+//        myAL.add(103.0);
+//        
+//        
+//        myAL.removeIf((t) -> {
+//            return (t % 5 == 0);
+//        });
+//        System.out.println(myAL);
+System.out.println(null instanceof Object);
+System.out.println(null == myAL.getClass());
         
     }
     
