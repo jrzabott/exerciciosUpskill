@@ -15,10 +15,9 @@ public class ShowFile {
 
     public static void main(String[] args) {
         int i;
-        FileInputStream fin = null;
+        String fileName = "test.txt";
 
-        try {
-            fin = new FileInputStream("test.txt");
+        try (FileInputStream fin = new FileInputStream(fileName)){
 
             // read bytes until EOF is encountered
             do {
@@ -28,20 +27,8 @@ public class ShowFile {
                 }
             } while (i != -1); // -1 means EOF
 
-        } catch (FileNotFoundException e) {
-            System.out.println("File not Found.");
         } catch (IOException e) {
-            System.out.println("An I/O Error Occurred");
-        } finally {
-            // close the file in all cases
-            try {
-                if (fin != null) {
-                    fin.close(); // close the file
-                }
-            } catch (IOException e) {
-                System.out.println("Error closing file.");
-            }
-        }
-
+            System.out.println("An I/O Error Occurred: " + e);
+        } 
     }
 }
