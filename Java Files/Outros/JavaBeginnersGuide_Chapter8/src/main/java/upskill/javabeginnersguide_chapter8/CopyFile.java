@@ -12,37 +12,24 @@ import java.io.*;
  * @author user
  */
 public class CopyFile {
+
     public static void main(String[] args) {
         int i;
-        FileInputStream fin = null;
-        FileOutputStream fout = null;
-        
         String firstFile = "first.txt";
         String secondFile = "second.txt";
-        
+
         //copy a file
-        try {
+        try (FileInputStream fin = new FileInputStream(firstFile);
+                FileOutputStream fout = new FileOutputStream(secondFile)) {
             // Attempt to open the files
-            fin = new FileInputStream(firstFile);
-            fout = new FileOutputStream(secondFile);
-            
             do {
                 i = fin.read();
-                if (i != -1) fout.write(i);
+                if (i != -1) {
+                    fout.write(i);
+                }
             } while (i != -1);
         } catch (IOException e) {
             System.out.println("I/O Error: " + e);
-        } finally {
-            try {
-                if (fin != null) fin.close();
-            } catch (IOException e) {
-                System.out.println("Error Closing Input File: " + e);
-            }
-            try {
-                if (fout != null) fout.close();
-            } catch (IOException e) {
-                System.out.println("Error Closing Output File: " + e);
-            }
         }
     }
 }
