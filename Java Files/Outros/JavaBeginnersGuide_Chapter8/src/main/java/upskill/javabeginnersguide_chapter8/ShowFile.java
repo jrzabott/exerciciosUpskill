@@ -12,10 +12,11 @@ import java.io.*;
  * @author user
  */
 public class ShowFile {
+
     public static void main(String[] args) {
         int i;
         FileInputStream fin;
-        
+
 //        //first make sure that a file has been specified.
 //        if (args.length != 1) {
 //            System.out.println("Usage: ShowFile File");
@@ -27,23 +28,25 @@ public class ShowFile {
             System.out.println("File Not Found");
             return;
         }
-        
+
         try {
             // read bytes until EOF is encountered
             do {
                 i = fin.read(); // read from file
-                if (i != -1)
+                if (i != -1) {
                     System.out.print((char) i);
+                }
             } while (i != -1); // -1 means EOF
-            
+
         } catch (IOException e) {
             System.out.println("Error reading file.");
+        } finally {
+            try {
+                fin.close(); // close the file
+            } catch (IOException e) {
+                System.out.println("Error closing file.");
+            }
         }
-        
-        try {
-            fin.close(); // close the file
-        } catch (IOException e) {
-            System.out.println("Error closing file.");
-        }
+
     }
 }
