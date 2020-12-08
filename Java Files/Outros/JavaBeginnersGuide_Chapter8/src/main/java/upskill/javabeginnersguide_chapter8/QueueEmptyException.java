@@ -9,7 +9,7 @@ package upskill.javabeginnersguide_chapter8;
  *
  * @author user
  */
-public class QueueEmptyException {
+public class QueueEmptyException extends Exception{
     
     @Override
     public String toString() {

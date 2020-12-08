@@ -13,8 +13,8 @@ package upskill.javabeginnersguide_chapter8;
 public interface ICharQ {
     
     // Put a char into the queue
-    void put(char ch);
+    void put(char ch) throws QueueFullException;
     
     // Get a char from the queue
-    char get();
+    char get() throws QueueEmptyException;
 }

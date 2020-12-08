@@ -20,12 +20,11 @@ class FixedQueue implements ICharQ {
         this.putloc = this.getloc = 0;
     }
     
-    //put a char into the array
+    //put a char into the arSray
     @Override
-    public void put(char ch) {
+    public void put(char ch) throws QueueFullException{
         if (putloc == q.length) {
-            System.out.println(" - Queue is full.");
-            return;
+            throw new QueueFullException(q.length);
         }
         
         q[putloc++] = ch;
@@ -33,10 +32,9 @@ class FixedQueue implements ICharQ {
 
     // Get a char from the queue
     @Override
-    public char get() {
+    public char get() throws QueueEmptyException{
         if (getloc == putloc) {
-            System.out.println(" - Queue is empty.");
-            return (char) 0;
+            throw new QueueEmptyException();
         }
         
         return q[getloc++];
