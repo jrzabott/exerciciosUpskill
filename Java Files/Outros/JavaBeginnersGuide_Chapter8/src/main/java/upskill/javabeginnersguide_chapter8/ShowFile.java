@@ -15,21 +15,11 @@ public class ShowFile {
 
     public static void main(String[] args) {
         int i;
-        FileInputStream fin;
+        FileInputStream fin = null;
 
-//        //first make sure that a file has been specified.
-//        if (args.length != 1) {
-//            System.out.println("Usage: ShowFile File");
-//            return;
-//        }
         try {
             fin = new FileInputStream("test.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("File Not Found");
-            return;
-        }
 
-        try {
             // read bytes until EOF is encountered
             do {
                 i = fin.read(); // read from file
@@ -38,11 +28,16 @@ public class ShowFile {
                 }
             } while (i != -1); // -1 means EOF
 
+        } catch (FileNotFoundException e) {
+            System.out.println("File not Found.");
         } catch (IOException e) {
-            System.out.println("Error reading file.");
+            System.out.println("An I/O Error Occurred");
         } finally {
+            // close the file in all cases
             try {
-                fin.close(); // close the file
+                if (fin != null) {
+                    fin.close(); // close the file
+                }
             } catch (IOException e) {
                 System.out.println("Error closing file.");
             }
