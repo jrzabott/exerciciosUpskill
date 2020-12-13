@@ -12,8 +12,8 @@ package upskill.javabeginnersguide_chapter8;
 public class SumArray {
     private int sum;
     
-    synchronized int sumArray(int nums[]){
-//    int sumArray(int nums[]){
+//    synchronized int sumArray(int nums[]){
+    int sumArray(int nums[]){ // not synchronised
         sum = 0; // reset sum
         
         for (int i = 0; i < nums.length; i++) {
