@@ -17,9 +17,9 @@ public class MyThread implements Runnable {
     Thread myThread;
     boolean suspended, stopped;
 
-    public MyThread(String name) {
+    MyThread(String name) {
         myThread = new Thread(this, name);
-        suspended = stopped = true;
+        suspended = stopped = false;
     }
 
     // Factory method that creates and start a thread.
@@ -34,10 +34,9 @@ public class MyThread implements Runnable {
         String txt = String.format("%s starting...", myThread.getName());
         System.out.println(txt);
         try {
-            for (int i = 0; i < 1000; i++) {
-                txt = String.format("%d ", i);
-                System.out.print(txt);
-                if (i % 10 == 0) {
+            for (int i = 0; i < 10000; i++) {
+                System.out.print(String.format("%d ", i));
+                if ((i % 10) == 0) {
                     System.out.println();
                     Thread.sleep(250);
                 }
@@ -47,9 +46,7 @@ public class MyThread implements Runnable {
                     while (suspended) {                        
                         wait();
                     }
-                    if (stopped) {
-                        break;
-                    }
+                    if (stopped) break;
                 }
             }
         } catch (InterruptedException e) {
