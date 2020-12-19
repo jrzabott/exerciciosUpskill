@@ -54,14 +54,14 @@ public class GenQDemo {
         try {
             for (int i = 0; i < 6; i++) {
                 System.out.println("Adding " + (double) i / 2 + " to q2.");
-                q2.put((double)i/2); // add a double value to q2
+                q2.put((double) i / 2); // add a double value to q2
             }
         } catch (QueueFullException e) {
             System.out.println(e);
         }
-        
+
         System.out.println();
-        
+
         try {
             for (int i = 0; i < 6; i++) {
                 System.out.print("Getting next Double from q2: ");
