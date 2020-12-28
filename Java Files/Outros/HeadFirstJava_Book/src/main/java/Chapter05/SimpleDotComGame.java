@@ -5,6 +5,9 @@
  */
 package Chapter05;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author user
@@ -18,16 +21,23 @@ public class SimpleDotComGame {
         int numOfGuesses = 0;
         GameHelper helper = new GameHelper();
 
-        SimpleDotCom theDotCom = new SimpleDotCom();
+//        SimpleDotCom theDotCom = new SimpleDotCom();
+        DotCom theDotCom = new DotCom();
         int randomNum = (int) (Math.random() * 5);
 
         int[] locations = {randomNum, randomNum + 1, randomNum + 2};
-        theDotCom.setLocationCells(locations);
+        ArrayList<String> newLoc = new ArrayList<String>();
+        for (int location : locations) {
+            newLoc.add(Integer.toString(location));
+        }
+//        theDotCom.setLocationCells(locations);
+        theDotCom.setLocationCells(newLoc);
         boolean isAlive = true;
         
         while (isAlive) {            
             String guess = helper.getUserInput("enter a number"); 
 String result = theDotCom.checkYourself(guess);
+            System.out.println(result);
 numOfGuesses++;
             if ("kill".equals(result)) {
                 isAlive = false;
