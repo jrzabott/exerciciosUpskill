@@ -99,9 +99,12 @@ public class Ponto {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
+        hash = 79 * hash + this.X;
+        hash = 79 * hash + this.Y;
         return hash;
     }
+
 
     @Override
     public boolean equals(Object obj) {
