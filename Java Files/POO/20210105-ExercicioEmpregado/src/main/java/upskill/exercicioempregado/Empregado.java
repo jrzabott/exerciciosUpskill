@@ -5,20 +5,25 @@
  */
 package upskill.exercicioempregado;
 
+import java.time.LocalDate;
+import upskill.utilitarios.Data;
+import upskill.utilitarios.Tempo;
+
 /**
  *
  * @author user
  */
 public class Empregado {
+
     private String primeiroNome, ultimoNome;
     private Data dataContrato;
     private Tempo horaEntrada;
     private Tempo horaSaida;
-    
+
     static final String PRIMEIRO_NOME_DEFAULT = "Nome nao Atribuido";
     static final String ULTIMO_NOME_DEFAULT = "Ultimo Nome nao Atribuido";
-    
-    
+    static final double DIAS_TRABALHO_SEMANA = 5.0;
+    static final double CONVERSAO_SEGUNDOS_PARA_HORAS = 3600.0;
 
     /**
      * @return the primeiroNome
@@ -105,7 +110,7 @@ public class Empregado {
         this.horaEntrada = new Tempo();
         this.horaSaida = new Tempo();
     }
-    
+
     public Empregado() {
         this.primeiroNome = PRIMEIRO_NOME_DEFAULT;
         this.ultimoNome = ULTIMO_NOME_DEFAULT;
@@ -113,7 +118,21 @@ public class Empregado {
         this.horaEntrada = new Tempo();
         this.horaSaida = new Tempo();
     }
-    
-    
-    
+
+    public double calculateHorasTrabalhoSemanal() {
+        return horaSaida.diferencaEmSegundos(horaEntrada)
+                / CONVERSAO_SEGUNDOS_PARA_HORAS
+                * DIAS_TRABALHO_SEMANA;
+    }
+
+    public int calculateTempoContrato() {
+        java.time.LocalDate currentDate = LocalDate.now();
+        Data today = new Data(
+                currentDate.getYear(),
+                currentDate.getMonthValue(),
+                currentDate.getDayOfMonth()
+        );
+        return today.diferenca(dataContrato);
+    }
+
 }
