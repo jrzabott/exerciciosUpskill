@@ -15,16 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author user
  */
 public class PontoTest {
-    
+
     Ponto instance = new Ponto(0, 1);
-    
+
     public PontoTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
@@ -52,7 +52,7 @@ public class PontoTest {
         instance.setX(X);
         assertEquals(X, instance.getX());
         instance.setX(0);
-        
+
     }
 
     @Test
@@ -61,7 +61,7 @@ public class PontoTest {
         int Y = 0;
         Ponto instance = new Ponto();
         instance.setY(Y);
-        assertEquals(Y,instance.getY());
+        assertEquals(Y, instance.getY());
         instance.setY(1);
     }
 
@@ -104,7 +104,7 @@ public class PontoTest {
         int x = 0;
         Ponto instance = new Ponto(x, 0);
         instance.incX(i);
-        assertEquals(instance.getX(), x+i);
+        assertEquals(instance.getX(), x + i);
     }
 
     @Test
@@ -114,7 +114,7 @@ public class PontoTest {
         int y = 0;
         Ponto instance = new Ponto(0, y);
         instance.incY(i);
-        assertEquals(instance.getY(), y+i);
+        assertEquals(instance.getY(), y + i);
     }
-    
+
 }
