@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PontoTest {
     
+    Ponto instance = new Ponto(0, 1);
+    
     public PontoTest() {
     }
     
@@ -30,33 +32,27 @@ public class PontoTest {
     @Test
     public void testGetX() {
         System.out.println("getX");
-        Ponto instance = new Ponto();
         int expResult = 0;
         int result = instance.getX();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetY() {
         System.out.println("getY");
-        Ponto instance = new Ponto();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.getY();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testSetX() {
         System.out.println("setX");
-        int X = 0;
-        Ponto instance = new Ponto();
+        int X = 1;
         instance.setX(X);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(X, instance.getX());
+        instance.setX(0);
+        
     }
 
     @Test
@@ -65,64 +61,60 @@ public class PontoTest {
         int Y = 0;
         Ponto instance = new Ponto();
         instance.setY(Y);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(Y,instance.getY());
+        instance.setY(1);
     }
 
     @Test
     public void testMovePoint_int_int() {
         System.out.println("movePoint");
-        int x1 = 0;
+        int x1 = 1;
         int y1 = 0;
-        Ponto instance = new Ponto();
-        Ponto expResult = null;
-        Ponto result = instance.movePoint(x1, y1);
+        Ponto instance = new Ponto(0, 1);
+        Ponto expResult = new Ponto(1, 0);
+        instance.movePoint(x1, y1);
+        Ponto result = instance;
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testMovePoint_Ponto() {
         System.out.println("movePoint");
-        Ponto otherP = null;
-        Ponto instance = new Ponto();
-        Ponto expResult = null;
-        Ponto result = instance.movePoint(otherP);
+        Ponto otherP = new Ponto(1, 0);
+        Ponto instance = new Ponto(0, 1);
+        Ponto expResult = otherP.clone();
+        instance.movePoint(otherP);
+        Ponto result = instance;
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testClone() {
         System.out.println("clone");
         Ponto instance = new Ponto();
-        Ponto expResult = null;
+        Ponto expResult = new Ponto();
         Ponto result = instance.clone();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testIncX() {
         System.out.println("incX");
-        int i = 0;
-        Ponto instance = new Ponto();
+        int i = 1;
+        int x = 0;
+        Ponto instance = new Ponto(x, 0);
         instance.incX(i);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getX(), x+i);
     }
 
     @Test
     public void testIncY() {
         System.out.println("incY");
         int i = 0;
-        Ponto instance = new Ponto();
+        int y = 0;
+        Ponto instance = new Ponto(0, y);
         instance.incY(i);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getY(), y+i);
     }
     
 }
