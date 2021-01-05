@@ -135,4 +135,11 @@ public class Empregado {
         return today.diferenca(dataContrato);
     }
 
+    @Override
+    public String toString() {
+        return "Empregado{" + "primeiroNome=" + primeiroNome + ", ultimoNome=" + ultimoNome + ", dataContrato=" + dataContrato + ", horaEntrada=" + horaEntrada + ", horaSaida=" + horaSaida + '}';
+    }
+
+    
+    
 }
