@@ -17,7 +17,9 @@ public class JanKenPonGame {
     
     public void getChoice(int player){
         Scanner s = new Scanner(System.in);
-        System.out.println(String.format("Player %d, entre com sua opção:%n1.Pedra%n2.Papel%n3.Tesoura:", player));
+        System.out.println(String.format(
+                "Player %d, entre com sua opção:%n1.Pedra%n2.Papel%n3.Tesoura:"
+                , player));
         int choice = s.nextInt();
         s.close();
 
