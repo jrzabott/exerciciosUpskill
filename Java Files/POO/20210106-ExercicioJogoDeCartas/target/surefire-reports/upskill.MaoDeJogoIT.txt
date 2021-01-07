@@ -1,0 +1,40 @@
+-------------------------------------------------------------------------------
+Test set: upskill.MaoDeJogoIT
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.068 sec <<< FAILURE!
+upskill.MaoDeJogoIT.testTiposDeCarta()  Time elapsed: 0.034 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <null> but was: <[]>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at upskill.MaoDeJogoIT.testTiposDeCarta(MaoDeJogoIT.java:68)
+
+upskill.MaoDeJogoIT.testOrdenar()  Time elapsed: 0.005 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: The test case is a prototype.
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:39)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:109)
+	at upskill.MaoDeJogoIT.testOrdenar(MaoDeJogoIT.java:82)
+
+upskill.MaoDeJogoIT.testContarCartasDoTipo()  Time elapsed: 0.004 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: The test case is a prototype.
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:39)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:109)
+	at upskill.MaoDeJogoIT.testContarCartasDoTipo(MaoDeJogoIT.java:97)
+
+upskill.MaoDeJogoIT.testToString()  Time elapsed: 0.002 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <> but was: <MaoDeJogo{cartas=[]}>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at upskill.MaoDeJogoIT.testToString(MaoDeJogoIT.java:109)
+
+upskill.MaoDeJogoIT.testEquals()  Time elapsed: 0.004 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: The test case is a prototype.
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:39)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:109)
+	at upskill.MaoDeJogoIT.testEquals(MaoDeJogoIT.java:127)
+
