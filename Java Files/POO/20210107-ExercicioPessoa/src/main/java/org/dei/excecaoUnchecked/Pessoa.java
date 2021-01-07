@@ -98,8 +98,8 @@ public class Pessoa implements Comparable<Pessoa> {
      */
     public void setIDCivil(int idCivil) {
         
-       
-        if (Integer.toString(idCivil).length() != 8) {
+       String idCivilString = Integer.toString(idCivil);
+        if (idCivilString.length() > 8 || idCivil < 0) {
             throw new ArgumentoForaDosLimitesException("# Id Civil Inválido.");
         }
         this.idCivil = idCivil;
