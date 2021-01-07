@@ -36,25 +36,26 @@ public class MaoDeJogo {
     }
 
     public List<Carta> tiposDeCarta() {
-        List<Carta> tiposDeCarta = new ArrayList<>();
-        for (Carta carta : this.getCartas()) {
-            if (!tiposDeCarta.contains(carta)) {
-                tiposDeCarta.add(carta);
-            }
-        }
-        return tiposDeCarta;
+//        List<Carta> tiposDeCarta = new ArrayList<>();
+//        for (Carta carta : this.getCartas()) {
+//            if (!tiposDeCarta.contains(carta)) {
+//                tiposDeCarta.add(carta);
+//            }
+//        }
+//        return tiposDeCarta;
+        return cartas;
     }
-    
-    public void ordenar(){
+
+    public void ordenar() {
 //        List<Carta> sortedCartas = new ArrayList<>(this.getCartas());
         Comparator<Carta> naipeComparator = Comparator.comparing(Carta::getNaipe);
         Comparator<Carta> tipoComparator = Comparator.comparing(Carta::getTipo);
         Comparator<Carta> multipleFieldComparator = naipeComparator.thenComparing(tipoComparator);
-        
+
         Collections.sort(cartas, multipleFieldComparator);
     }
-    
-    public int contarCartasDoTipo(Carta.EnumCartaTipo cartaTipo){
+
+    public int contarCartasDoTipo(Carta.EnumCartaTipo cartaTipo) {
         int count = 0;
         for (Carta carta : cartas) {
             if (carta.getTipo() == cartaTipo) {
@@ -96,8 +97,5 @@ public class MaoDeJogo {
         }
         return true;
     }
-    
-    
-    
-    
+
 }
