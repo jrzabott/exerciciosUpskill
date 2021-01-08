@@ -21,16 +21,16 @@ public class ListaFilmes {
     private final static String ID_DEFAULT = "N/A";
 
     {
+        this.id = ID_DEFAULT;
         this.setFilmes(new ArrayList<>());
     }
 
-    public ListaFilmes(List<Filme> filmes, String id) {
+    public ListaFilmes(List<Filme> filmes) {
         this.filmes = filmes;
-        this.id = id;
+        
     }
 
     public ListaFilmes() {
-        this.id = ID_DEFAULT;
     }
 
     /**
@@ -58,7 +58,9 @@ public class ListaFilmes {
      * @param id the id to set
      */
     public void setId(String id) throws IdentificadorInvalidoException {
-        this.id = id;
+        if (validaIdentificador(id)) {
+            this.id = id;
+        }
     }
 
     @Override
@@ -99,8 +101,27 @@ public class ListaFilmes {
         return sb.toString();
     }
 
-    
-    
-    
+    public boolean addFilme(Filme f) {
+        return filmes.add(f);
+
+    }
+
+    private boolean validaIdentificador(String i) throws IdentificadorInvalidoException {
+        if (i.isEmpty()) {
+            throw new IdentificadorInvalidoException("Identificador não pode ser vazio");
+        }
+        char maiusculas[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        boolean isMaiuscula = false;
+
+        for (char maiuscula : maiusculas) {
+            if (maiuscula == i.charAt(0)) {
+                isMaiuscula = true;
+            }
+        }
+        if (!isMaiuscula) {
+            throw new IdentificadorInvalidoException("A primeira letra do identificador deve ser uma letra maiúscula.");
+        }
+        return isMaiuscula;
+    }
 
 }

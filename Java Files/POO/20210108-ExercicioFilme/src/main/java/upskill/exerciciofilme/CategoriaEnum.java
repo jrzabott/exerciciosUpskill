@@ -10,5 +10,20 @@ package upskill.exerciciofilme;
  * @author user
  */
 public enum CategoriaEnum {
-    ACAO, ANIMACAO, COMEDIA, DRAMA, TERROR
+    ACAO("ação"), 
+    ANIMACAO("animação"), 
+    COMEDIA("comédia"), 
+    DRAMA("drama"), 
+    TERROR("terror");
+    private String nomeCategoria;
+
+    private CategoriaEnum(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria.toUpperCase();
+    }
+    public String getNomeCategoria(){
+        return this.nomeCategoria;
+    }
+
+    
+    
 }

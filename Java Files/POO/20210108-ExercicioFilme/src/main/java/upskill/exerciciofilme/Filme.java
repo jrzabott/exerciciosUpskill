@@ -22,12 +22,12 @@ public class Filme {
     private static final Realizador REALIZADOR_DEFAULT = new Realizador();
     private static final CategoriaEnum CATEGORIA_DEFAULT = CategoriaEnum.ACAO;
 
-    public Filme(String titulo, int anoRealizacao, Realizador realizador, CategoriaEnum categoria) {
-        this.titulo = titulo;
-        this.anoRealizacao = anoRealizacao;
-        this.realizador = realizador;
-        this.categoria = categoria;
-    }
+//    public Filme(String titulo, int anoRealizacao, Realizador realizador, CategoriaEnum categoria) {
+//        this.titulo = titulo;
+//        this.anoRealizacao = anoRealizacao;
+//        this.realizador = realizador;
+//        this.categoria = categoria;
+//    }
 
     public Filme() {
         this.titulo = TITULO_DEFAULT;
@@ -49,6 +49,9 @@ public class Filme {
     }
 
     public void setAnoRealizacao(int anoRealizacao) throws AnoInvalidoException {
+        if (!validaAnoRealizacao(anoRealizacao)) {
+            throw new AnoInvalidoException("Ano inválido. Deve estar compreendido entre 1850 e " + Data.dataAtual().getAno());
+        }
         this.anoRealizacao = anoRealizacao;
     }
 
@@ -64,8 +67,17 @@ public class Filme {
         return categoria;
     }
 
-    public void setCategoria(CategoriaEnum categoria) throws CategoriaInvalidaException {
+    public void setCategoria(CategoriaEnum categoria) {
         this.categoria = categoria;
+    }
+    
+    public void setCategoria(String categoria) throws CategoriaInvalidaException {
+        CategoriaEnum ce;
+        if (!validaCategoria(categoria)) {
+            throw new CategoriaInvalidaException("Categoria inválida, tente novamente.");
+        }
+        
+        this.categoria = obterCategoriaViaString(categoria);
     }
 
     @Override
@@ -116,5 +128,28 @@ public class Filme {
         return sb.toString();
     }
     
-    
+    private boolean validaAnoRealizacao(int ano) {
+        return (ano > 1850 || ano <= Data.dataAtual().getAno());
+        
+    }
+
+    private boolean validaCategoria(String categoria) {
+        boolean categoriaEValida = false;
+        for (CategoriaEnum ce : CategoriaEnum.values()) {
+            if (ce.getNomeCategoria().equals(categoria)){
+                categoriaEValida = true;
+            } 
+        }
+        return categoriaEValida;
+    }
+
+    private CategoriaEnum obterCategoriaViaString(String categoria) {
+        CategoriaEnum result = null;
+        for (CategoriaEnum ce : CategoriaEnum.values()) {
+            if (ce.getNomeCategoria().equals(categoria)){
+                result = ce;
+            }
+        }
+        return result;
+    }
 }
