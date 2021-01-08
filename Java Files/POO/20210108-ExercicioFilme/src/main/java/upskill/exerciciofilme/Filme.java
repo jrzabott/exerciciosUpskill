@@ -18,7 +18,7 @@ public class Filme {
     private CategoriaEnum categoria;
     
     private static final String TITULO_DEFAULT = "Sem Titulo";
-    private static final int ANO_REALIZACAO_DEFAULT = 1850;
+    private static final int ANO_REALIZACAO_DEFAULT = 0;
     private static final Realizador REALIZADOR_DEFAULT = new Realizador();
     private static final CategoriaEnum CATEGORIA_DEFAULT = CategoriaEnum.ACAO;
 
@@ -129,15 +129,18 @@ public class Filme {
     }
     
     private boolean validaAnoRealizacao(int ano) {
-        return (ano > 1850 || ano <= Data.dataAtual().getAno());
+        boolean testeAno = ano > 1850;
+        boolean testeAnoAtual = ano <= Data.dataAtual().getAno();
+        return (testeAno && testeAnoAtual);
         
     }
 
     private boolean validaCategoria(String categoria) {
         boolean categoriaEValida = false;
         for (CategoriaEnum ce : CategoriaEnum.values()) {
-            if (ce.getNomeCategoria().equals(categoria)){
+            if (ce.getNomeCategoria().equals(categoria.toUpperCase())){
                 categoriaEValida = true;
+                break;
             } 
         }
         return categoriaEValida;
@@ -146,7 +149,7 @@ public class Filme {
     private CategoriaEnum obterCategoriaViaString(String categoria) {
         CategoriaEnum result = null;
         for (CategoriaEnum ce : CategoriaEnum.values()) {
-            if (ce.getNomeCategoria().equals(categoria)){
+            if (ce.getNomeCategoria().equals(categoria.toUpperCase())){
                 result = ce;
             }
         }

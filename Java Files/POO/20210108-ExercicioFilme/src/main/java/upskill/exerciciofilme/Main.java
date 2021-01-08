@@ -31,62 +31,71 @@ public class Main {
         ListaFilmes l2 = new ListaFilmes();
 
         try {
-            f1.setAnoRealizacao(1800);
-            f1.setCategoria("ação");
-            f1.setRealizador(r1);
             f1.setTitulo("Movie From Daniel");
+            f1.setCategoria("ação");
+//            f1.setAnoRealizacao(1800); // Validation Error Expected
+            f1.setAnoRealizacao(1899);
+            f1.setRealizador(r1);
         } catch (AnoInvalidoException | CategoriaInvalidaException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(f1.getTitulo() + " . " + ex.getMessage());
         }
 
         try {
-            f2.setAnoRealizacao(1850);
-            f2.setCategoria("acao");
-            f2.setRealizador(r1);
             f2.setTitulo("Movie From Daniel Part 2");
+//            f2.setAnoRealizacao(1850); // Validation Error Expected
+            f2.setAnoRealizacao(1851);
+//            f2.setCategoria("acao"); // Validation Error Expected
+            f2.setCategoria("ação");
+            f2.setRealizador(r1);
         } catch (AnoInvalidoException | CategoriaInvalidaException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(f2.getTitulo() + " . " + ex.getMessage());
         }
 
-        try {
-            f3.setAnoRealizacao(1852);
-            f3.setCategoria("comédia");
-            f3.setRealizador(r1);
+        try { // All OK in this one
             f3.setTitulo("Movie From Daniel Part 3");
-        } catch (AnoInvalidoException | CategoriaInvalidaException ex) {
-            System.out.println(ex.getMessage());
-        }
-        try {
-            f4.setAnoRealizacao(1950);
-            f4.setCategoria("animação");
-            f4.setRealizador(r2);
-            f4.setTitulo("Anima Daniel");
-        } catch (AnoInvalidoException | CategoriaInvalidaException ex) {
-            System.out.println(ex.getMessage());
-        }
-        try {
-            f3.setAnoRealizacao(2020);
-            f3.setCategoria("terror");
+            f3.setCategoria("comédia");
+            f3.setAnoRealizacao(1852);
             f3.setRealizador(r1);
-            f3.setTitulo("Junior Mundi");
         } catch (AnoInvalidoException | CategoriaInvalidaException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(f3.getTitulo() + " . " + ex.getMessage());
+        }
+        try {
+            f4.setTitulo("Anima Daniel");
+            f4.setAnoRealizacao(1950);
+//            f4.setCategoria("acao"); // Validation Error Expected
+            f4.setCategoria("ação"); // Validation Error Expected
+            f4.setRealizador(r2);
+        } catch (AnoInvalidoException | CategoriaInvalidaException ex) {
+            System.out.println(f4.getTitulo() + " . " + ex.getMessage());
+        }
+        try {
+            f5.setTitulo("Junior Mundi");
+//            f5.setAnoRealizacao(2022); // Validation Error Expected
+            f5.setAnoRealizacao(Data.dataAtual().getAno());
+            f5.setCategoria("terror");
+            f5.setRealizador(r1);
+        } catch (AnoInvalidoException | CategoriaInvalidaException ex) {
+            System.out.println(f5.getTitulo() + " . " + ex.getMessage());
         }
 
         try {
-            l1.setId("aDemir");
+//            l1.setId("aDemir"); // Validation Error Expected
+            l1.setId("Ademir");
+        } catch (IdentificadorInvalidoException ex) {
+            System.out.println(l1 + " . " + ex.getMessage());
+        }
+        try {
             l2.setId("Jorge");
         } catch (IdentificadorInvalidoException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(l2 + " . " + ex.getMessage());
         }
-        
+
         l1.addFilme(f1);
         l1.addFilme(f2);
         l1.addFilme(f3);
         l2.addFilme(f4);
         l2.addFilme(f5);
-        
-        
+
         System.out.println("==========================\nLista de REALIZADORES\n----------------------");
         System.out.println(r1);
         System.out.println(r2);
