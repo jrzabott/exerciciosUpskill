@@ -96,7 +96,7 @@ public class ListaFilmes {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Lista: ").append(id);
-        sb.append(", Filmes:").append(filmes);
+        sb.append("\nFilmes:").append(filmes);
         sb.append(".\n");
         return sb.toString();
     }
