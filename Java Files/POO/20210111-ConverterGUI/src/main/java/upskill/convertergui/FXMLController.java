@@ -48,8 +48,8 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void btnLimparAction(ActionEvent event) {
-        txtFieldC.setText("");
-        txtFieldF.setText("");
+        txtFieldC.clear();
+        txtFieldF.clear();
     }
 
     @FXML
@@ -61,6 +61,8 @@ public class FXMLController implements Initializable {
             valorFahrenheit = 1.8f * valorCelsius + 32.0f;
             txtFieldF.setText(String.valueOf(valorFahrenheit));
         } catch (NumberFormatException e) {
+            txtFieldF.clear();
+
             Alert mensagemErro = new Alert(Alert.AlertType.ERROR);
             mensagemErro.setTitle("Erro ao calcular");
             mensagemErro.setHeaderText("Temperatura em Celsius Inválida.");
