@@ -25,12 +25,11 @@ public class FXMLController implements Initializable {
     private Button btnAction;
     @FXML
     private Button btnConverter;
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void btnSairAction(ActionEvent event) {
@@ -38,11 +37,10 @@ public class FXMLController implements Initializable {
         mensagemSaida.setTitle("Aplicação");
         mensagemSaida.setHeaderText("Confirmação da Ação:");
         mensagemSaida.setContentText("Deseja mesmo fechar a aplicação?");
-        
-        ((Button)mensagemSaida.getDialogPane().lookupButton(ButtonType.OK)).setText("Sim");
-        ((Button)mensagemSaida.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Não");
-                
-        
+
+        ((Button) mensagemSaida.getDialogPane().lookupButton(ButtonType.OK)).setText("Sim");
+        ((Button) mensagemSaida.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Não");
+
         if (mensagemSaida.showAndWait().get() == ButtonType.OK) {
             btnSair.getScene().getWindow().hide();
         }
@@ -56,8 +54,18 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void btnConverterAction(ActionEvent event) {
-        float valorCelsius = Float.parseFloat(txtFieldC.getText());
-        float valorFahrenheit = 1.8f * valorCelsius + 32.0f;
-        txtFieldF.setText(String.valueOf(valorFahrenheit));
+
+        try {
+            float valorCelsius = Float.parseFloat(txtFieldC.getText());
+            float valorFahrenheit = 0;
+            valorFahrenheit = 1.8f * valorCelsius + 32.0f;
+            txtFieldF.setText(String.valueOf(valorFahrenheit));
+        } catch (NumberFormatException e) {
+            Alert mensagemErro = new Alert(Alert.AlertType.ERROR);
+            mensagemErro.setTitle("Erro ao calcular");
+            mensagemErro.setHeaderText("Temperatura em Celsius Inválida.");
+            mensagemErro.setContentText("Favor inserir um número válido.");
+            mensagemErro.show();
+        }
     }
 }
