@@ -17,7 +17,7 @@
                   <Insets right="20.0" />
                </FlowPane.margin>
             </Label>
-            <TextField fx:id="txtNumLetras" alignment="CENTER" prefHeight="25.0" prefWidth="57.0" text="3" />
+            <TextField fx:id="txtNumLetras" alignment="CENTER" onKeyPressed="#txtNumLetrasKeyPressed" prefHeight="25.0" prefWidth="57.0" text="3" />
             <Button mnemonicParsing="false" onAction="#btnConfirmarAction" text="Confirmar">
                <FlowPane.margin>
                   <Insets left="20.0" />

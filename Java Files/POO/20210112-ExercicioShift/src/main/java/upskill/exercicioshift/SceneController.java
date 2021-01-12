@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
@@ -109,5 +111,12 @@ public class SceneController implements Initializable {
 
     private void limparLabels() {
         hBox.getChildren().remove(1, hBox.getChildren().size() - 1);
+    }
+
+    @FXML
+    private void txtNumLetrasKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            btnConfirmarAction(new ActionEvent());
+        }
     }
 }
