@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upskill.exercicioshift.SceneController">
+   <top>
+      <FlowPane alignment="TOP_CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Quantidade de Letras [3,7]:">
+               <FlowPane.margin>
+                  <Insets right="20.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="txtNumLetras" alignment="CENTER" prefHeight="25.0" prefWidth="57.0" text="3" />
+            <Button mnemonicParsing="false" onAction="#btnConfirmarAction" text="Confirmar">
+               <FlowPane.margin>
+                  <Insets left="20.0" />
+               </FlowPane.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </FlowPane>
+   </top>
+   <bottom>
+      <HBox fx:id="hBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="shiftLeft" mnemonicParsing="false" onAction="#shiftLeftAction" prefHeight="65.0" prefWidth="65.0" text="&lt;&lt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="shiftRight" mnemonicParsing="false" onAction="#shiftRightAction" prefHeight="65.0" prefWidth="65.0" text="&gt;&gt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
