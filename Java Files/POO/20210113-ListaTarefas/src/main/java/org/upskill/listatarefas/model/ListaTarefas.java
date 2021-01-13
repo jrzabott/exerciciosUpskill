@@ -1,11 +1,9 @@
 package org.upskill.listatarefas.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import org.upskill.listatarefas.controller.AplicacaoController;
 
 public class ListaTarefas {
 
@@ -13,13 +11,10 @@ public class ListaTarefas {
 
 
 
-    public enum ORDENACAO {
-        INSERCAO, PRIORIDADE
-    }
 
     //implementar todas as funcionalidades necessárias
     public ListaTarefas() {
-        listaTarefas = new ArrayList<Tarefa>();
+        listaTarefas = new ArrayList<>();
     }
     //implementar todas as funcionalidades necessárias
     public ListaTarefas(ListaTarefas outraLista) {
@@ -56,8 +51,6 @@ public class ListaTarefas {
     }
 
     public String orderByPrioridade() {
-//        Comparator<Tarefa> orderByPrioridade = Comparator.comparing(Tarefa::getPrioridade);
-//        Collections.sort(listaTarefas, orderByPrioridade);
         Collections.sort(listaTarefas);
         return this.toString();
     }
@@ -65,5 +58,8 @@ public class ListaTarefas {
         Comparator<Tarefa> orderByHora = Comparator.comparing(Tarefa::getInstante);
         Collections.sort(listaTarefas, orderByHora);
         return this.toString();
+    }
+    public enum ORDENACAO {
+        INSERCAO, PRIORIDADE
     }
 }

@@ -16,17 +16,6 @@ import javafx.scene.layout.Region;
  */
 public class AlertUI {
     
-    /**
-     *
-     * @param msg
-     * @param header
-     */
-    private AlertUI(String msg, String header, Alert.AlertType type) {
-        Alert alert = new Alert(type, msg, ButtonType.OK);
-            alert.setHeaderText(header);
-            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-            alert.show();
-    }
     
     public static void newErrorUI(String msg, String header) {
         new AlertUI(msg, header, AlertType.ERROR);
@@ -34,5 +23,16 @@ public class AlertUI {
     public static void newInfoUI(String msg, String header) {
         new AlertUI(msg, header, AlertType.INFORMATION);
 }
+    /**
+     *
+     * @param msg
+     * @param header
+     */
+    private AlertUI(String msg, String header, Alert.AlertType type) {
+        Alert alert = new Alert(type, msg, ButtonType.OK);
+        alert.setHeaderText(header);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.show();
+    }
     
 }

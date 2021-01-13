@@ -2,9 +2,17 @@ package org.upskill.listatarefas.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 
 public class Tarefa implements Comparable<Tarefa> {
+    private static Prioridade getPrioridadeByValue(String v) {
+        Prioridade result = null;
+        for (Prioridade p : Prioridade.values()) {
+            if (p.toString().equals(v)) {
+                result = p;
+            }
+        }
+        return result;
+    }
 
     private String descricao;
     private LocalDateTime instante;
@@ -70,15 +78,6 @@ public class Tarefa implements Comparable<Tarefa> {
 
     
 
-    private static Prioridade getPrioridadeByValue(String v) {
-        Prioridade result = null;
-        for (Prioridade p : Prioridade.values()) {
-            if (p.toString().equals(v)) {
-                result = p;
-            }
-        }
-        return result;
-    }
     
 
 }
