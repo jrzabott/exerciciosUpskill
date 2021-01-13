@@ -88,6 +88,8 @@ public class Main {
                 }
             }
         }).start();
+        
+        System.out.println("Teste GIT CHECKOUT!");
 //        }
     }
 
