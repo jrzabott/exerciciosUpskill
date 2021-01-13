@@ -56,12 +56,14 @@ public class ListaTarefas {
     }
 
     public String orderByPrioridade() {
-        Comparator<Tarefa> orderByPrioridade = Comparator.comparing(Tarefa::getPrioridade);
-        Collections.sort(listaTarefas, orderByPrioridade);
+//        Comparator<Tarefa> orderByPrioridade = Comparator.comparing(Tarefa::getPrioridade);
+//        Collections.sort(listaTarefas, orderByPrioridade);
+        Collections.sort(listaTarefas);
         return this.toString();
     }
     public String orderByHora() {
-        Collections.sort(listaTarefas);
+        Comparator<Tarefa> orderByHora = Comparator.comparing(Tarefa::getInstante);
+        Collections.sort(listaTarefas, orderByHora);
         return this.toString();
     }
 }

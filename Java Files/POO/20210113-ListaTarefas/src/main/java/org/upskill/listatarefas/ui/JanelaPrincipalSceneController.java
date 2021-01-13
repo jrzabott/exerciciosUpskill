@@ -90,6 +90,10 @@ public class JanelaPrincipalSceneController implements Initializable {
     private void teclaPressionadaAction(KeyEvent event) {
         limparUltimaTarefa(event);
         ordenarListaPorPrioridade(event);
+        ordenarListaPorHora(event);
+    }
+
+    private void ordenarListaPorHora(KeyEvent event) {
         if (event.isControlDown() && event.getCode() == KeyCode.O) {
             atualizaTextAreaListaDeTarefas(controller.getListaTarefasPorHora());
         }
@@ -101,7 +105,7 @@ public class JanelaPrincipalSceneController implements Initializable {
         }
     }
 
-    private void limparUltimaTarefa(KeyEvent event) {
+    private void limparUltimaTarefa(KeyEvent event) { 
         if (event.isControlDown() && event.getCode() == KeyCode.Z) {
             controller.eliminarUltimaTarefa();
             atualizaTextAreaListaDeTarefas();
