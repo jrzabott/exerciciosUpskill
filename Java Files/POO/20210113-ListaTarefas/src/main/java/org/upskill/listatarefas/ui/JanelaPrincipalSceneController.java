@@ -15,11 +15,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.upskill.listatarefas.controller.AplicacaoController;
+import org.upskill.listatarefas.model.ListaTarefas;
 
 public class JanelaPrincipalSceneController implements Initializable {
 
@@ -39,7 +41,7 @@ public class JanelaPrincipalSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdicionarTarefaScene.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -49,9 +51,9 @@ public class JanelaPrincipalSceneController implements Initializable {
             novaTarefaStage.setTitle("Nova Tarefa");
             novaTarefaStage.setResizable(false);
             novaTarefaStage.setScene(scene);
-            
+
             controller = new AplicacaoController();
-            
+
             AdicionarTarefaSceneController tarefaSceneController = loader.getController();
             tarefaSceneController.associarParentUI(this);
 
@@ -59,17 +61,18 @@ public class JanelaPrincipalSceneController implements Initializable {
         } catch (IOException ex) {
             AlertUI.newErrorUI("Erro ao criar janela \"Nova Tarefa\".", "Nova Tarefa");
         }
-            btnAdicionarTarefas.setText("Adicionar Tarefa");
-            btnLimparTarefas.setText("Limpar Tarefas");
-
+        btnAdicionarTarefas.setText("Adicionar Tarefa");
+        btnLimparTarefas.setText("Limpar Tarefas");
+        txtAreaTarefas.requestFocus();
     }
 
-
     public void atualizaTextAreaListaDeTarefas() {
-        if (!controller.getListaTarefas().trim().isEmpty()) {
-            txtAreaTarefas.setText(controller.getListaTarefas());
-            btnLimparTarefas.setDisable(false);
-        }
+        txtAreaTarefas.setText(controller.getListaTarefas());
+        btnLimparTarefas.setDisable((controller.listaVazia()));
+    }
+    public void atualizaTextAreaListaDeTarefas(String l) {
+        txtAreaTarefas.setText(l);
+        btnLimparTarefas.setDisable((controller.listaVazia()));
     }
 
     @FXML
@@ -79,13 +82,30 @@ public class JanelaPrincipalSceneController implements Initializable {
 
     @FXML
     private void limparTarefasAction(ActionEvent event) {
-        txtAreaTarefas.clear();
         controller.eliminarTarefas();
-        btnLimparTarefas.setDisable(true);
+        atualizaTextAreaListaDeTarefas();
     }
 
     @FXML
     private void teclaPressionadaAction(KeyEvent event) {
+        limparUltimaTarefa(event);
+        ordenarListaPorPrioridade(event);
+        if (event.isControlDown() && event.getCode() == KeyCode.O) {
+            atualizaTextAreaListaDeTarefas(controller.getListaTarefasPorHora());
+        }
+    }
+
+    private void ordenarListaPorPrioridade(KeyEvent event) {
+        if (event.isControlDown() && event.getCode() == KeyCode.P) {
+            atualizaTextAreaListaDeTarefas(controller.getListaTarefasPorPrioridade());
+        }
+    }
+
+    private void limparUltimaTarefa(KeyEvent event) {
+        if (event.isControlDown() && event.getCode() == KeyCode.Z) {
+            controller.eliminarUltimaTarefa();
+            atualizaTextAreaListaDeTarefas();
+        }
     }
 
     public AplicacaoController getAplicacaoController() {

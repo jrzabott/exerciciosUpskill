@@ -47,7 +47,7 @@ public class AplicacaoController {
 
     //TODO retorna os elementos da lista, por decrescente de prioridade
     public String getListaTarefasPorPrioridade() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lista.orderByPrioridade();
     }
 
     //retorna um array com todos os valores de Prioridade
@@ -55,5 +55,9 @@ public class AplicacaoController {
         return Prioridade.values();
     }
 
+    public String getListaTarefasPorHora() {
+        return lista.orderByHora();
+    }
    
+
 }

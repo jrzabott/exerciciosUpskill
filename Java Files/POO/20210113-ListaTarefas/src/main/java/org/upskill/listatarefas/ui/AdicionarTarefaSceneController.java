@@ -40,6 +40,8 @@ public class AdicionarTarefaSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         btnCriarTarefa.setText("Adicionar");
         btnCancelar.setText("Cancelar");
+        lblPrioridade.setText("Prioridade:");
+        lblTarefa.setText("Descrição da Tarefa:");
         cmbPrioridade.getItems().add("");
         cmbPrioridade.setValue("");
         for (Prioridade p : Prioridade.values()) {

@@ -2,16 +2,21 @@ package org.upskill.listatarefas.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 
 public class Tarefa implements Comparable<Tarefa> {
+
     private String descricao;
     private LocalDateTime instante;
     private Prioridade prioridade;
 
+    {
+        instante = LocalDateTime.now();
+    }
+
     public Tarefa(String descricao, Prioridade prioridade) {
         setDescricao(descricao);
         setPrioridade(prioridade);
-        instante = LocalDateTime.now();
     }
 
     Tarefa(String descricao, String prioridade) {
@@ -47,22 +52,24 @@ public class Tarefa implements Comparable<Tarefa> {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatoInstante = 
-                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:MM:SS.SSS");
+        DateTimeFormatter formatoInstante
+                = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:MM:SS.SSS");
         String stringDataTempoDeRegisto = instante.format(formatoInstante);
-        return String.format("%s - %s - %s", descricao, prioridade, 
+        return String.format("%s - %s - %s", descricao, prioridade,
                 stringDataTempoDeRegisto);
     }
 
     @Override
     public int compareTo(Tarefa outraTarefa) {
-        if(prioridade.equals(outraTarefa.prioridade)) {
+        if (prioridade.equals(outraTarefa.prioridade)) {
             return instante.compareTo(outraTarefa.instante);
         }
-        
+
         return prioridade.compareTo(outraTarefa.prioridade);
     }
+
     
+
     private static Prioridade getPrioridadeByValue(String v) {
         Prioridade result = null;
         for (Prioridade p : Prioridade.values()) {
@@ -72,5 +79,6 @@ public class Tarefa implements Comparable<Tarefa> {
         }
         return result;
     }
+    
 
 }
