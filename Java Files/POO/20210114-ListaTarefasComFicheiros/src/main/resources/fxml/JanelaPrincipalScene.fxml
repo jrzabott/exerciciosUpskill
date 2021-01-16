@@ -7,29 +7,38 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane onKeyReleased="#teclaPressionadaAction" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <bottom>
-      <GridPane vgap="5.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button fx:id="btnAdicionarTarefas" defaultButton="true" mnemonicParsing="false" onAction="#adicionarTarefaAction" GridPane.halignment="CENTER" />
-            <Button fx:id="btnLimparTarefas" disable="true" mnemonicParsing="false" onAction="#limparTarefasAction" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" top="10.0" />
-         </padding>
-      </GridPane>
-   </bottom>
-   <right>
-      <TextArea fx:id="txtAreaTarefas" editable="false" prefWidth="400.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets left="10.0" right="10.0" top="5.0" />
-         </BorderPane.margin></TextArea>
-   </right>
+<BorderPane onKeyReleased="#teclaPressionadaAction" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.upskill.listatarefas.ui.JanelaPrincipalSceneController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+            <Menu fx:id="menuFile" mnemonicParsing="false" onShowing="#menuFileOnShowing" text="File">
+              <items>
+                  <MenuItem fx:id="menuItemOpenBinary" mnemonicParsing="false" onAction="#menuItemOpenBinaryAction" text="Open Binary" />
+                  <MenuItem fx:id="menuItemOpenBinaryFrom" mnemonicParsing="false" onAction="#menuItemOpenBinaryFromAction" text="Open Binary From..." />
+                  <MenuItem fx:id="menuItemSaveBinary" mnemonicParsing="false" onAction="#menuItemSaveBinaryAction" text="Save Binary" />
+                  <MenuItem fx:id="menuItemSaveBinaryAs" mnemonicParsing="false" onAction="#menuItemSaveBinaryAsAction" text="Save Binary As..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem fx:id="menuItemSaveTextAs" mnemonicParsing="false" onAction="#menuItemSaveTextAsAction" text="Save Text As..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#menuItemExitAction" text="Exit" />
+              </items>
+            </Menu>
+          <Menu fx:id="menuTask" mnemonicParsing="false" onAction="#menuTaskAction" onShowing="#menuTaskOnShowing" text="Task">
+               <items>
+                  <MenuItem fx:id="menuItemTaskAdd" mnemonicParsing="false" onAction="#menuItemTaskAddAction" text="Add" />
+                  <Menu fx:id="menuRemove" mnemonicParsing="false" text="Remove">
+                    <items>
+                      <MenuItem fx:id="menuItemRemoveAll" mnemonicParsing="false" onAction="#menuItemRemoveAllAction" text="All" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="menuItemRemoveSelected" mnemonicParsing="false" onAction="#menuItemRemoveSelectedAction" text="Selected" />
+                    </items>
+                  </Menu>
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <ListView fx:id="lstViewTarefas" onContextMenuRequested="#lstViewTarefasContextMenuRequested" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

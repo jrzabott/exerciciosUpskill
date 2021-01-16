@@ -8,12 +8,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.AdicionarTarefaSceneController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.upskill.listatarefas.ui.AdicionarTarefaSceneController">
    <bottom>
       <FlowPane alignment="CENTER" hgap="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnCriarTarefa" defaultButton="true" mnemonicParsing="false" onAction="#criarTarefaAction" />
-            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelarAction" />
+            <Button fx:id="btnCriarTarefa" defaultButton="true" mnemonicParsing="false" onAction="#criarTarefaAction" text="Create Task" />
+            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelarAction" text="Cancel" />
          </children>
          <padding>
             <Insets bottom="5.0" top="15.0" />

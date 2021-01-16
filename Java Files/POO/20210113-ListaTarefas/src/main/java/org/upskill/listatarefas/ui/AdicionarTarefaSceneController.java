@@ -35,6 +35,9 @@ public class AdicionarTarefaSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+        
         btnCriarTarefa.setText("Adicionar");
         btnCancelar.setText("Cancelar");
         lblPrioridade.setText("Prioridade:");
