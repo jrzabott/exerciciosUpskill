@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -92,12 +95,14 @@ public class JanelaPrincipalSceneController implements Initializable {
         }
     }
 
-    private void confirmToSaveText(ActionEvent event, File myFile) {
+    private void confirmToSaveText(ActionEvent event) {
         String title, head, msg;
         title = "Export Text file";
         head = "Text Export";
         Optional<ButtonType> bt = AlertUI.createConfirmartionUI(title, head, "Export to text file?");
         if (bt.get() == ButtonType.YES) {
+            FileChooser fc = new FileChooser();
+            File myFile = fc.showSaveDialog(lstViewTarefas.getScene().getWindow());
             saveToText(myFile, title, head);
 
         } else {
@@ -105,12 +110,14 @@ public class JanelaPrincipalSceneController implements Initializable {
         }
     }
 
-    private void confirmToSave(ActionEvent event, File myFile) {
+    private void confirmToSave(ActionEvent event) {
         String title, head, msg;
         title = "Save binary file";
         head = "File save";
         Optional<ButtonType> bt = AlertUI.createConfirmartionUI(title, head, "Save to binary file?");
         if (bt.get() == ButtonType.YES) {
+            FileChooser fc = new FileChooser();
+            File myFile = fc.showSaveDialog(lstViewTarefas.getScene().getWindow());
             saveToFile(myFile, title, head);
         } else {
             event.consume();
@@ -121,10 +128,6 @@ public class JanelaPrincipalSceneController implements Initializable {
 //        appController.saveToFile(myFile);
     }
 
-    private void confirmToSave(ActionEvent event) {
-        File myFile = null;
-        confirmToSave(event, myFile);
-    }
 
     private int getListViewSelectionIndex() {
         return lstViewTarefas.getSelectionModel().getSelectedIndex();
@@ -144,11 +147,16 @@ public class JanelaPrincipalSceneController implements Initializable {
 
     @FXML
     private void menuItemExitAction(ActionEvent event) {
-
+        try {
+            appController.saveToFileSilently();
+        } catch (IOException ex) {
+            AlertUI.createUI(Alert.AlertType.ERROR, "Filed to backup the Task List", "Failed to Backup File", "There was an error during the auto sabe operation.");
+        }
+        Platform.exit();
     }
 
     @FXML
-    private void menuItemOpenBinaryAction(ActionEvent event) {
+    void menuItemOpenBinaryAction(ActionEvent event) {
         int addedTasks = appController.readFromFile();
         if (addedTasks > 0) {
             AlertUI.createUI(Alert.AlertType.INFORMATION, "Importação de Tarefas", addedTasks + " tasks were added", addedTasks + " tasks were added");
@@ -195,21 +203,22 @@ public class JanelaPrincipalSceneController implements Initializable {
 
     @FXML
     private void menuItemSaveBinaryAction(ActionEvent event) {
-        confirmToSave(event);
+        saveToFile("Save to File", "Save to Binary File");
     }
 
     @FXML
     private void menuItemSaveBinaryAsAction(ActionEvent event) {
-        FileChooser fc = new FileChooser();
-        File myFile = fc.showSaveDialog(lstViewTarefas.getScene().getWindow());
-        confirmToSave(event, myFile);
+//        FileChooser fc = new FileChooser();
+//        File myFile = fc.showSaveDialog(lstViewTarefas.getScene().getWindow());
+        confirmToSave(event);
     }
 
     @FXML
     private void menuItemSaveTextAsAction(ActionEvent event) {
-        FileChooser fc = new FileChooser();
-        File myFile = fc.showSaveDialog(lstViewTarefas.getScene().getWindow());
-        confirmToSaveText(event, myFile);
+//        FileChooser fc = new FileChooser();
+//        File myFile = fc.showSaveDialog(lstViewTarefas.getScene().getWindow());
+//        confirmToSaveText(event, myFile);
+        confirmToSaveText(event);
     }
 
     @FXML

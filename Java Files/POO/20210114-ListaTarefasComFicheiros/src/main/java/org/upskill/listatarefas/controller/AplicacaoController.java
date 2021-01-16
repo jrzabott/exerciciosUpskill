@@ -1,6 +1,7 @@
 package org.upskill.listatarefas.controller;
 
 import java.io.File;
+import java.io.IOException;
 import org.upskill.listatarefas.model.FileListaTarefas;
 import org.upskill.listatarefas.model.ListaTarefas;
 
@@ -82,6 +83,11 @@ public class AplicacaoController {
     public boolean saveToFile() {
         File myFile = null;
         return (fileListaTarefas.saveToFile(lista, myFile));
+    }
+
+    public void saveToFileSilently() throws IOException {
+        File myFile = null;
+        fileListaTarefas.saveToFileSilently(lista, myFile);
     }
 
     public boolean saveToFile(File myFile) {

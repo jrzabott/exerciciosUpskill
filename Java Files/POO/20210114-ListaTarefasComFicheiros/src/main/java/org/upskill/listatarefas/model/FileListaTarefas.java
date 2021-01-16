@@ -63,7 +63,7 @@ public class FileListaTarefas {
         }
         return result;
     }
-
+    
     public boolean saveToFile(ListaTarefas listaTarefas, File file) {
         File myFile = (file == null) ? myFile = new File(TASKS_FILE_DEFAULT) : file;
         
@@ -78,5 +78,14 @@ public class FileListaTarefas {
             AlertUI.createUI(Alert.AlertType.ERROR, "Error Reading/Writing file.", "Failed to Read/Write file.", ex.getMessage());
         }
         return result;
+    }
+    public void saveToFileSilently(ListaTarefas listaTarefas, File file) throws IOException {
+        File myFile = new File(TASKS_FILE_DEFAULT);
+        boolean result = false;
+        try (FileOutputStream fileOut = new FileOutputStream(myFile)) {
+            ObjectOutputStream outStream = new ObjectOutputStream(fileOut);
+            outStream.writeObject(listaTarefas);
+            result = true;
+        } 
     }
 }
