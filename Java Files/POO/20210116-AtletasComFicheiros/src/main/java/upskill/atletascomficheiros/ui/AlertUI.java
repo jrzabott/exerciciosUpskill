@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.upskill.listatarefas.ui;
+package upskill.atletascomficheiros.ui;
 
 import java.util.Optional;
 import javafx.scene.control.Alert;
@@ -15,7 +15,6 @@ import javafx.scene.layout.Region;
  * @author user
  */
 public class AlertUI {
-
 
     public static Optional<ButtonType> createConfirmartionUI(String title, String header, String msg) {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
@@ -29,6 +28,7 @@ public class AlertUI {
         a.getButtonTypes().add(ButtonType.NO);
         return a.showAndWait();
     }
+
     public static void createUI(Alert.AlertType type, String title, String header, String msg) {
         Alert a = new Alert(type);
         a.getDialogPane().setMinWidth(Region.USE_PREF_SIZE);

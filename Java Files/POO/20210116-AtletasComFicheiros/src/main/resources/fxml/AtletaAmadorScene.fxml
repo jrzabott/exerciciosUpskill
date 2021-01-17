@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upskill.atletascomficheiros.ui.AtletaAmadorUI">
+    <top>
+        <Label text="Atleta Amador" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="20.0" top="20.0" />
+            </BorderPane.margin>
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+    </top>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Nome" GridPane.halignment="RIGHT">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Id Civil" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Genero" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Idade" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Tipo Atividade" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Intensidade de Treino" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Freq Card em Repouso (FCR)" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Premio" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <Label text="Antiguidade" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+                <TextField fx:id="txtFieldNome" maxWidth="200.0" GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets left="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="txtFieldIDCivil" layoutX="310.0" layoutY="18.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="txtFieldIdade" layoutX="310.0" layoutY="58.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets left="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="txtFieldFCR" layoutX="310.0" layoutY="138.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets left="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="txtFieldPremio" layoutX="310.0" layoutY="255.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets left="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="txtFieldAntiguidade" layoutX="310.0" layoutY="294.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets left="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <FlowPane alignment="CENTER_LEFT" hgap="25.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <RadioButton fx:id="radioButtonFeminino" mnemonicParsing="false" text="Feminino">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="generoToggleGroup" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioButtonMasculino" mnemonicParsing="false" text="Masculino" toggleGroup="$generoToggleGroup" />
+                    </children>
+                    <padding>
+                        <Insets left="5.0" />
+                    </padding>
+                </FlowPane>
+                <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddAction" text="Adicionar" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+                    <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </GridPane.margin>
+                </Button>
+                <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelAction" text="Cancelar" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                    <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </GridPane.margin>
+                </Button>
+                <ComboBox fx:id="cmbBoxTipoAtividades" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </GridPane.margin>
+                </ComboBox>
+                <ComboBox fx:id="cmbBoxIntensidadeTreino" layoutX="310.0" layoutY="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </GridPane.margin>
+                </ComboBox>
+            </children>
+        </GridPane>
+    </center>
+</BorderPane>
