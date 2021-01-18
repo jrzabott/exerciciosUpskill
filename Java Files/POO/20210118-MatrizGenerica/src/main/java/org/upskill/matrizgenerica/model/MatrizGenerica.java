@@ -16,7 +16,11 @@ public class MatrizGenerica<E> {
 
     // 4.b)
     public boolean adicionarLinha(Collection<E> novaLinha) {
-        return matrizGenerica.add((List<E>) novaLinha);
+        if (novaLinha.size() > numeroMaximoColunas) {
+            numeroMaximoColunas = novaLinha.size();
+        }
+        List<E> novaLista = new ArrayList<>(novaLinha);
+        return matrizGenerica.add((List<E>) novaLista);
     }
 
     //4.f)
@@ -45,17 +49,12 @@ public class MatrizGenerica<E> {
 
     //4.c)
     public boolean contemElemento(E elem) {
+        boolean result = false;
         for (List<E> row : matrizGenerica) {
-            if (row.equals(elem)) {
-                return true;
-            }
-            for (E col : row) {
-                if (col.equals(row)) {
-                    return true;
-                }
-            }
+            if (row.contains(elem))
+                result = true;
         }
-        return false;
+        return result;
     }
 
     public int getNumeroDeColunas(int indiceLinha) {
