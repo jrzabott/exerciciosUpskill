@@ -25,11 +25,11 @@ public class Pair<T extends Comparable<T> & Serializable, U extends Comparable<U
     }
 
     @Override
-    public int compareTo(Pair o) {
-        if (getFirst().compareTo((T)o.getFirst()) == 0) {
-            return this.getSecond().compareTo((U)o.getSecond());
+    public int compareTo(Pair<T, U> o) {
+        if (getFirst().compareTo(o.getFirst()) == 0) {
+            return this.getSecond().compareTo(o.getSecond());
         } else {
-            return this.getFirst().compareTo((T)o.getFirst());
+            return this.getFirst().compareTo(o.getFirst());
         }
     }
     
