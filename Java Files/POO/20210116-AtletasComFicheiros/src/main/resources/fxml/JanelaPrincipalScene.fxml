@@ -27,6 +27,6 @@
         </MenuBar>
     </top>
     <center>
-        <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        <ListView fx:id="lstViewAtletas" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>

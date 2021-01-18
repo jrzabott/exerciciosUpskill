@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -117,6 +118,9 @@ public class JanelaPrincipalSceneController implements Initializable {
     }
 
     @FXML
+    private ListView lstViewAtletas;
+    
+    @FXML
     private void menuItemAmadorAction(ActionEvent event) {
         loadAtletaAmadorUI();
     }
@@ -137,6 +141,12 @@ public class JanelaPrincipalSceneController implements Initializable {
 
     @FXML
     private void teclaPressionadaAction(KeyEvent event) {
+    }
+
+    public void atualizarLista() {
+        String[] atletas = appController.getListaAtletas();
+        lstViewAtletas.getItems().clear();
+        lstViewAtletas.getItems().addAll(Arrays.asList(atletas));
     }
 
 }

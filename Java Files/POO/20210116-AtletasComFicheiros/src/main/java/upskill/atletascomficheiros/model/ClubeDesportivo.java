@@ -83,6 +83,15 @@ public class ClubeDesportivo {
         atletas = new ArrayList<Atleta>();
     }
 
+    public String[] getListaAtletasAsStringArray() {
+        String[] arrayAtletas = new String[atletas.size()];
+        int i = 0;
+        for (Atleta atleta : atletas) {
+            arrayAtletas[i++] = atleta.toString();
+        }
+        return arrayAtletas;
+    }
+
     /**
      * @return nome do clube desportivo
      */
@@ -281,9 +290,13 @@ public class ClubeDesportivo {
      * @param premio valor monetário que o atleta conquistou em competições
      * @param antiguidade número de anos que o atleta tem de filiação no clube
      * desportivo
+     * @return 
      */
     public void adicionarAtletaAmador(String nome, int idCivil, String genero, int idade, String tipoAtividade, double iT, int fcr, double premio, int antiguidade) {
         atletas.add(new AtletaAmador(nome, idCivil, genero, idade, tipoAtividade, iT, fcr, premio, antiguidade));
+    }
+    public boolean adicionarAtletaAmador(String nome, String idCivil, String genero, String idade, String tipoAtividade, String iT, String fcr, String premio, String antiguidade) throws  IllegalArgumentException{
+        return atletas.add(new AtletaAmador(nome, idCivil, genero, idade, tipoAtividade, iT, fcr, premio, antiguidade));
     }
 
     /**

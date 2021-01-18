@@ -25,6 +25,15 @@ public class AtletaAmador extends AtletaNaoProfissional {
     private static int contadorAtletasAmadores = 0;
 
     /**
+     * Inicializador de instância da classe. Para cada um novo Atleta Amador, 
+     * a variável de classe será incrementada.
+     */
+    {
+        contadorAtletasAmadores++;
+    }
+    
+    
+    /**
      *
      * @param nome nome do atleta
      * @param idCivil número de identificação civil
@@ -42,7 +51,6 @@ public class AtletaAmador extends AtletaNaoProfissional {
      */
     public AtletaAmador(String nome, int idCivil, String genero, int idade, String tipoAtividade, double iT, int fcr, double premio, int antiguidade) {
         super(nome, idCivil, genero, idade, tipoAtividade, iT, fcr, premio, antiguidade);
-        contadorAtletasAmadores++;
     }
 
     /**
@@ -62,7 +70,6 @@ public class AtletaAmador extends AtletaNaoProfissional {
      */
     public AtletaAmador(String nome, int idCivil, String genero, int idade, String tipoAtividade, double iT, int fcr, int antiguidade) {
         super(nome, idCivil, genero, idade, tipoAtividade, iT, fcr, antiguidade);
-        contadorAtletasAmadores++;
     }
 
     /**
@@ -70,9 +77,11 @@ public class AtletaAmador extends AtletaNaoProfissional {
      */
     public AtletaAmador() {
         super();
-        contadorAtletasAmadores++;
     }
 
+    public AtletaAmador(String nome, String idCivil, String genero, String idade, String tipoAtividade, String iT, String fcr, String premio, String antiguidade) throws IllegalArgumentException{
+        super(nome, idCivil, genero, idade, tipoAtividade, iT, fcr, premio, antiguidade);
+    }
     /**
      *
      * @return Override do método toString
@@ -163,6 +172,10 @@ public class AtletaAmador extends AtletaNaoProfissional {
      */
     public static void setValorMinimo(double aValorMinimo) {
         valorMinimo = aValorMinimo;
+    }
+
+    private Exception IllegalArgumentException(String entre_com_o_nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

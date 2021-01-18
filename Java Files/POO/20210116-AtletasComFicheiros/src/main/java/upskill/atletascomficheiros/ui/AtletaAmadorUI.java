@@ -13,6 +13,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -32,7 +33,7 @@ public class AtletaAmadorUI implements Initializable {
     @FXML
     private Button btnCancel;
     @FXML
-    private ComboBox<?> cmbBoxIntensidadeTreino;
+    private ComboBox<String> cmbBoxIntensidadeTreino;
     @FXML
     private ComboBox<String> cmbBoxTipoAtividades;
     @FXML
@@ -77,6 +78,24 @@ public class AtletaAmadorUI implements Initializable {
 
     @FXML
     private void btnAddAction(ActionEvent event) {
+        System.out.println(((RadioButton)generoToggleGroup.getSelectedToggle()).getText());
+        try {
+            boolean added = appController.adicionarAtletaAmador(
+                    txtFieldNome.getText(),
+                    txtFieldIDCivil.getText(),
+                    ((RadioButton)generoToggleGroup.getSelectedToggle()).getText(),
+                    txtFieldIdade.getText(),
+                    cmbBoxTipoAtividades.getValue(),
+                    cmbBoxIntensidadeTreino.getValue(),
+                    txtFieldFCR.getText(),
+                    txtFieldPremio.getText(),
+                    txtFieldAntiguidade.getText()
+            );
+            btnAdd.getScene().getWindow().hide();
+            janelaPrincipalSceneController.atualizarLista();
+        } catch (IllegalArgumentException illegalArgumentException) {
+            AlertUI.createUI(Alert.AlertType.ERROR, "ERRO AO ADICIONAR ATLETA", "Erro ao criar novo atleta", illegalArgumentException.getMessage());
+        }
     }
 
     @FXML

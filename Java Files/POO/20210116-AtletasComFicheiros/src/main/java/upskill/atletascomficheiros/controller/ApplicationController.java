@@ -6,6 +6,7 @@
 package upskill.atletascomficheiros.controller;
 
 import java.util.Date;
+import upskill.atletascomficheiros.model.AtletaAmador;
 import upskill.atletascomficheiros.model.ClubeDesportivo;
 
 /**
@@ -26,8 +27,16 @@ public class ApplicationController {
         return upskill.atletascomficheiros.model.Atleta.getIntensidadeTreinos();
     }
 
+    public String[] getListaAtletas() {
+        return clubeDesportivo.getListaAtletasAsStringArray();
+    }
+
     public String[] getTipoAtividades() {
         return upskill.atletascomficheiros.model.Atleta.getTipoAtividades();
     }
 
+    public boolean adicionarAtletaAmador(String nome, String idCivil, String genero, String idade, String tipoAtividade, String iT, String fcr, String premio, String antiguidade) throws  IllegalArgumentException{
+        boolean added = clubeDesportivo.adicionarAtletaAmador(nome, idCivil, genero, idade, tipoAtividade, iT, fcr, premio, antiguidade);
+        return added;
+    }
 }

@@ -113,7 +113,7 @@
                 </TextField>
                 <FlowPane alignment="CENTER_LEFT" hgap="25.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
-                        <RadioButton fx:id="radioButtonFeminino" mnemonicParsing="false" text="Feminino">
+                        <RadioButton fx:id="radioButtonFeminino" mnemonicParsing="false" selected="true" text="Feminino">
                             <toggleGroup>
                                 <ToggleGroup fx:id="generoToggleGroup" />
                             </toggleGroup>

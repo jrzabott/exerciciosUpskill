@@ -82,4 +82,28 @@ public interface Atividade {
         }
         
     }
+    public static enum IntensidadeTreinos{
+        IT_QUEIMARGORDURA (0.6){
+            @Override
+            public String toString() {
+                return "Queimar Gordura"; 
+            }
+        },
+        IT_TREINOCARDIORESP (0.75){
+            @Override
+            public String toString() {
+                return "Treino Cardiorespiratório";
+            }
+        };
+        private double value;
+
+        private IntensidadeTreinos(double value) {
+            this.value = value;
+        }
+
+        public double getValue() {
+            return value;
+        }
+        
+    }
 }

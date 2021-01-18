@@ -109,6 +109,10 @@ public abstract class AtletaNaoProfissional extends Atleta {
         antiguidade = ANTIGUIDADE_POR_OMISSAO;
         contadorAtletasNaoProfissionais++;
     }
+    
+    public AtletaNaoProfissional(String nome, String idCivil, String genero, String idade, String tipoAtividade, String iT, String fcr, String premio, String antiguidade) throws IllegalArgumentException{
+        super(nome, idCivil, genero, idade, tipoAtividade, iT, fcr, premio, antiguidade);
+    }
 
     /**
      * @return número de anos de filiação do atleta no clube desportivo

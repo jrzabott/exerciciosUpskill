@@ -21,7 +21,6 @@ import java.util.Objects;
  */
 public abstract class Atleta implements Atividade, Comparable<Object> {
 
-    
     /**
      * Variável de instância - nome do atleta
      */
@@ -115,6 +114,139 @@ public abstract class Atleta implements Atividade, Comparable<Object> {
      * Variável de classe - conta o número de instâncias criadas do tipo atleta
      */
     private static int contadorAtletas = 0;
+
+    /**
+     *
+     * Construtor utilizado pela UI com validações de tipos de dados. Precisa
+     * ainda de testes unitários e talvez exaustivos.
+     *
+     * @param nome
+     * @param idCivil
+     * @param genero
+     * @param idade
+     * @param tipoAtividade
+     * @param iT
+     * @param fcr
+     * @param premio
+     * @param antiguidade
+     */
+    public Atleta(String nome, String idCivil, String genero, String idade, String tipoAtividade, String iT, String fcr, String premio, String antiguidade) throws IllegalArgumentException{
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Entre com o nome.");
+        }
+
+        if (idCivil == null || idCivil.trim().isEmpty()) {
+            throw new IllegalArgumentException("Entre com o numero de Identificação Civil.");
+        }
+        int intIdCivil;
+        try {
+            intIdCivil = Integer.parseInt(idCivil);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("A Identificação Civil informada é inválida. Por favor entre com um número inteiro maior que zero.");
+        }
+        if (intIdCivil < 0) {
+            throw new IllegalArgumentException("A Identificação Civil deve ser um numero inteiro maior que zero");
+        }
+
+        if ((!Atividade.GENERO_F.equals(genero) && !Atividade.GENERO_M.equals(genero)) || genero == null || genero.trim().isEmpty()) {
+            throw new IllegalArgumentException("Selecione o gênero desejado.");
+        }
+
+        int intIdade;
+        if (idade == null || idade.trim().isEmpty()) {
+            throw new IllegalArgumentException("Entre com um valor para idade.");
+        }
+        try {
+            intIdade = Integer.parseInt(idade);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("A idade informada é inválida. Por favor entre com um número inteiro maior que zero.");
+        }
+        if (intIdade < 0) {
+            throw new IllegalArgumentException("A idade deve ser um numero inteiro maior que zero");
+        }
+
+        if (tipoAtividade == null || tipoAtividade.trim().isEmpty()) {
+            throw new IllegalArgumentException("Selecione o tipo de atividade desejado.");
+        }
+        boolean atividadeValida = false;
+        for (String tipoAtividade1 : Atleta.getTipoAtividades()) {
+            if (tipoAtividade1.equals(tipoAtividade)) {
+                atividadeValida = true;
+            }
+        }
+        if (!atividadeValida) {
+            throw new IllegalArgumentException("Atividade Inválida. Por favor verifique os dados inseridos.");
+        }
+
+        if (iT == null || iT.trim().isEmpty()) {
+            throw new IllegalArgumentException("Selecione uma Intensidade de Treino.");
+        }
+        boolean intensidadeTreinoValida = false;
+        for (String iT1 : Atleta.getIntensidadeTreinos()) {
+            if (iT1.equals(iT)) {
+                intensidadeTreinoValida = true;
+            }
+        }
+        if (!intensidadeTreinoValida) {
+            throw new IllegalArgumentException("Atividade Inválida. Por favor verifique os dados inseridos.");
+        }
+        double doubleIT = 0.0d;
+        for (IntensidadeTreinos tempIT : IntensidadeTreinos.values()) {
+            if (tempIT.toString().equals(iT)) {
+                doubleIT = tempIT.getValue();
+            }
+        }
+
+        int intFCR;
+        if (fcr == null || fcr.trim().isEmpty()) {
+            throw new IllegalArgumentException("Entre com um valor para FCR.");
+        }
+        try {
+            intFCR = Integer.parseInt(fcr);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("A FCR informada é inválida. Por favor entre com um número inteiro maior que zero.");
+        }
+        if (intFCR < 0) {
+            throw new IllegalArgumentException("A FCR deve ser um numero inteiro maior que zero");
+        }
+
+        double doublePremio;
+        if (premio == null || premio.trim().isEmpty()) {
+            throw new IllegalArgumentException("Entre com um valor para Prêmio.");
+        }
+        try {
+            doublePremio = Integer.parseInt(premio);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("O Prêmio  informada é inválido. Por favor entre com um número decimal maior que zero.");
+        }
+        if (doublePremio < 0.0d) {
+            throw new IllegalArgumentException("O Prêmio deve ser um numero inteiro maior que zero");
+        }
+
+        int intAntiguidade;
+        if (antiguidade == null || antiguidade.trim().isEmpty()) {
+            throw new IllegalArgumentException("Entre com um valor para Antiguidade.");
+        }
+        try {
+            intAntiguidade = Integer.parseInt(antiguidade);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("A Antiguidade informada é inválida. Por favor entre com um número inteiro maior que zero.");
+        }
+        if (intAntiguidade < 0) {
+            throw new IllegalArgumentException("A Antiguidade deve ser um numero inteiro maior que zero");
+        }
+
+        this.nome = nome;
+        this.idCivil = intIdCivil;
+        this.genero = genero;
+        this.idade = intIdade;
+        this.tipoAtividade = tipoAtividade;
+        this.iT = doubleIT;
+        this.fcr = intFCR;
+        this.premio = doublePremio;
+        contadorAtletas++;
+
+    }
 
     // TODOS OS CONSTRUTORS/SETTERS NÃO ESTÃO A SER VALIDADOS - Validar tipoAtividade baseado na Interface "Atividade" que contém constantes das atividades permitidas.
     /**
@@ -457,11 +589,11 @@ public abstract class Atleta implements Atividade, Comparable<Object> {
 
     /**
      *
-     * @return all the values contained in TipoAtividades Enum (created in 
-     * 20210117 1656 by Daniel Junior) for populating the ComboBox for the UI 
+     * @return all the values contained in TipoAtividades Enum (created in
+     * 20210117 1656 by Daniel Junior) for populating the ComboBox for the UI
      * interface.
      */
-    public static String[] getTipoAtividades(){
+    public static String[] getTipoAtividades() {
         String[] result = new String[TipoAtividades.values().length];
         int i = 0;
         for (TipoAtividades tipoatividade : TipoAtividades.values()) {
@@ -469,15 +601,18 @@ public abstract class Atleta implements Atividade, Comparable<Object> {
         }
         return result;
     }
-    
+
     /**
-     * @return all the values contained in IntensidadeTreinos Enum (created in 
-     * 20210117 1656 by Daniel Junior) for populating the ComboBox for the UI 
+     * @return all the values contained in IntensidadeTreinos Enum (created in
+     * 20210117 1656 by Daniel Junior) for populating the ComboBox for the UI
      * interface.
      */
     public static String[] getIntensidadeTreinos() {
-        return new String[20];
+        String[] result = new String[IntensidadeTreinos.values().length];
+        int i = 0;
+        for (IntensidadeTreinos value : IntensidadeTreinos.values()) {
+            result[i++] = value.toString();
+        }
+        return result;
     }
-
-    
 }
