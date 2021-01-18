@@ -1,6 +1,9 @@
 package org.upskill.matrizgenerica.model;
 
-public class TrabalhadorPeca extends Trabalhador {
+import java.io.Serializable;
+
+public class TrabalhadorPeca extends Trabalhador implements Serializable{
+//public class TrabalhadorPeca extends Trabalhador { --> Original
 
     private int numeroPecasTipo1;
     private int numeroPecasTipo2;
