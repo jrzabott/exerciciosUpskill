@@ -15,10 +15,10 @@ import java.util.Objects;
  * @param <U>
  */
 public class Pair<T extends Comparable<T> & Serializable, U extends Comparable<U> & Serializable> implements Comparable<Pair<T, U>>, Serializable {
-    
+
     private T first;
     private U second;
-    
+
     public Pair(T first, U second) {
         this.first = first;
         this.second = second;
@@ -28,28 +28,26 @@ public class Pair<T extends Comparable<T> & Serializable, U extends Comparable<U
     public int compareTo(Pair<T, U> o) {
         if (getFirst().compareTo(o.getFirst()) == 0) {
             return this.getSecond().compareTo(o.getSecond());
-        } else {
-            return this.getFirst().compareTo(o.getFirst());
         }
+        return this.getFirst().compareTo(o.getFirst());
     }
-    
-       
+
     public T getFirst() {
         return this.first;
     }
-    
+
     public void setFirst(T first) {
         this.first = first;
     }
-    
+
     public U getSecond() {
         return this.second;
     }
-    
+
     public void setSecond(U second) {
         this.second = second;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -57,7 +55,7 @@ public class Pair<T extends Comparable<T> & Serializable, U extends Comparable<U
         hash = 29 * hash + Objects.hashCode(this.second);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -78,7 +76,7 @@ public class Pair<T extends Comparable<T> & Serializable, U extends Comparable<U
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -89,5 +87,5 @@ public class Pair<T extends Comparable<T> & Serializable, U extends Comparable<U
                 .append(")");
         return sb.toString();
     }
-    
+
 }
