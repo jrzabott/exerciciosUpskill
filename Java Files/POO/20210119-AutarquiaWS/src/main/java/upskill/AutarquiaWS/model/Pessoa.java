@@ -71,8 +71,9 @@ public class Pessoa implements Serializable {
             return false;
         }
         for (int i = 0; i < nome.length(); i++) {
-            if (nome.charAt(i) >= '0' && nome.charAt(i) <= '9')
-return false;
+            if (nome.charAt(i) >= '0' && nome.charAt(i) <= '9') {
+                return false;
+            }
         }
         return true;
 
