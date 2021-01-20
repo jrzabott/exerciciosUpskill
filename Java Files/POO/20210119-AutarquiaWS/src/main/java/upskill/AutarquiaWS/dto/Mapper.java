@@ -9,6 +9,7 @@ import upskill.AutarquiaWS.model.Data;
 import upskill.AutarquiaWS.model.Funcionario;
 import upskill.AutarquiaWS.model.Pessoa;
 import java.util.ArrayList;
+import upskill.AutarquiaWS.model.Freguesia;
 
 public class Mapper {
 
@@ -92,5 +93,35 @@ public class Mapper {
         ListaFuncionarioDTO listaFuncionarioDTO = new ListaFuncionarioDTO();
         listaFuncionarioDTO.setFuncionarios(funcionariosDTO);
         return listaFuncionarioDTO;
+    }
+
+    public static FreguesiaDTO freguesia2FreguesiaDTO(Freguesia freguesia) {
+        FreguesiaDTO freguesiaDTO = new FreguesiaDTO();
+        freguesiaDTO.setId(freguesia.getId());
+        freguesiaDTO.setNome(freguesia.getNome());
+        return freguesiaDTO;
+    }
+
+    public static Freguesia freguesiaDTO2Freguesia(FreguesiaDTO freguesiaDTO) {
+        // TODO freguesiaDTO2Freguesia
+        Freguesia freguesia = new Freguesia();
+        freguesia.setId(freguesiaDTO.getId());
+        freguesia.setNome(freguesiaDTO.getNome());
+        return freguesia;
+    }
+
+    public static ListaFreguesiaDTO listFreguesia2FreguesiaDTO(ArrayList<Freguesia> freguesias) {
+        ArrayList<FreguesiaDTO> freguesiasDTO = new ArrayList<>();
+        for (Freguesia freguesia : freguesias) {
+            try {
+                FreguesiaDTO freguesiaDTO = freguesia2FreguesiaDTO(freguesia);
+                freguesiasDTO.add(freguesiaDTO);
+            } catch (NullPointerException e) {
+                // Does nothing (blergh!)
+            }
+        }
+        ListaFreguesiaDTO listaFreguesiaDTO = new ListaFreguesiaDTO();
+        listaFreguesiaDTO.setFreguesias(freguesiasDTO);
+        return listaFreguesiaDTO;
     }
 }

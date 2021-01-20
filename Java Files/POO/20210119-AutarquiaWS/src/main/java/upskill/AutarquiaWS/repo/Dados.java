@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import static java.nio.file.StandardOpenOption.CREATE;
 import upskill.AutarquiaWS.model.Autarquia;
+import upskill.AutarquiaWS.model.Freguesia;
 
 /**
  *
@@ -23,7 +24,10 @@ public class Dados {
     static final String AUTARQUIA_FILE = "autarquia_dados.dat";
 
     public static Autarquia carregarDados() {
-        Autarquia autarquia = new Autarquia("Curral de Moinas");
+//        Autarquia autarquia = new Autarquia("Curral de Moinas");
+        Freguesia freguesiaInicial = new Freguesia(0, "");
+        Autarquia autarquia = new Autarquia("Curral de Moinas", freguesiaInicial);
+        
         Path file = Paths.get(AUTARQUIA_FILE);
         try {
             ObjectInputStream o = new ObjectInputStream(new FileInputStream(file.toString()));

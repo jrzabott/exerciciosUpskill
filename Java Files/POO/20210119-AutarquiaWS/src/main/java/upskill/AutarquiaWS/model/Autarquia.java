@@ -11,15 +11,24 @@ import upskill.AutarquiaWS.exception.NumeroFuncionarioDuplicadoException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import upskill.AutarquiaWS.exception.FreguesiaDuplicadoException;
 
 public class Autarquia implements Serializable {
 
     private String nome;
     private ArrayList<Pessoa> pessoas;
+    private ArrayList<Freguesia> freguesias;
 
+    public Autarquia(String nome, Freguesia freguesia) {
+        this.nome = nome;
+        this.pessoas = new ArrayList<Pessoa>();
+        this.freguesias = new ArrayList<Freguesia>();
+        this.freguesias.add(freguesia);
+    }
     public Autarquia(String nome) {
         this.nome = nome;
         this.pessoas = new ArrayList<Pessoa>();
+        this.freguesias = new ArrayList<Freguesia>();
     }
 
     public ArrayList<Pessoa> getAllPessoas() {
@@ -197,5 +206,68 @@ public class Autarquia implements Serializable {
             }
         }
         return null;
+    }
+
+    public void addFreguesia(Freguesia freguesia) throws NifDuplicadoException {
+        Freguesia f = getFreguesiaById(freguesia.getId());
+        if (f == null) {
+            this.freguesias.add(freguesia);
+        } else {
+            throw new FreguesiaDuplicadoException(f.getId() + " - " + f.getNome() + ": ID de Freguesia já existe.");
+        }
+    }
+
+    private Freguesia getFreguesiaById(long id) {
+        Freguesia freguesia = null;
+        for (int i = 0; i < this.freguesias.size(); i++) {
+            freguesia = this.freguesias.get(i);
+            if (freguesia.getId() == id) {
+                Freguesia copia = new Freguesia(freguesia);
+                return copia;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Freguesia> getFreguesias() {
+        Freguesia freguesia;
+        ArrayList<Freguesia> lista = new ArrayList<>();
+        for (int i = 0; i < this.freguesias.size(); i++) {
+            freguesia = this.freguesias.get(i);
+            lista.add(freguesia);
+        }
+        return lista;
+    }
+
+    public Freguesia getFreguesia(long id) {
+        return getFreguesiaById(id);
+    }
+
+    public void removeFreguesia(long id) {
+        Freguesia freguesia = null;
+        for (int i = 0; i < this.freguesias.size(); i++) {
+            freguesia = this.freguesias.get(i);
+            if (freguesia.getId() == id) {
+                this.freguesias.remove(i
+                );
+                return;
+            }
+        }
+        throw new ElementoNaoExistenteException(id + ": Não existe uma freguesia com este ID");
+    }
+
+    public void updateFreguesia(long id, Freguesia f) {
+        Freguesia freguesia = null;
+        boolean updated = false;
+        for (int i = 0; i < this.freguesias.size() && !updated; i++) {
+            freguesia = this.freguesias.get(i);
+            if (freguesia.getId() == id) {
+                freguesia = f;
+                updated = true;
+            }
+        }
+        if (!updated) {
+            throw new ElementoNaoExistenteException(id + ": Não existe freguesia com este ID");
+        }
     }
 }

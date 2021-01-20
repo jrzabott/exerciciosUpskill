@@ -90,6 +90,7 @@ public class PessoasController {
 
     @RequestMapping(
             value = "/pessoas/{id}",
+            method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Object> removePessoa(
             @PathVariable("id") long nif) {
