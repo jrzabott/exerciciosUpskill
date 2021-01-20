@@ -1,0 +1,10 @@
+org/upskill/listatelefonica/ui/MainApp$1.class
+org/upskill/listatelefonica/model/ContactoTelefonico.class
+org/upskill/listatelefonica/ui/MainApp.class
+org/upskill/listatelefonica/ui/AdicionarNovoContactoUI.class
+org/upskill/listatelefonica/ui/FileChooserListaTelefonicaUI.class
+org/upskill/listatelefonica/model/ListaTelefonica.class
+org/upskill/listatelefonica/ui/AlertaUI.class
+org/upskill/listatelefonica/ui/JanelaPrincipalUI.class
+org/upskill/listatelefonica/model/FicheiroListaTelefonica.class
+org/upskill/listatelefonica/controller/AplicacaoController.class

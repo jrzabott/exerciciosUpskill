@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane onKeyReleased="#teclaPressionadaAction" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upskill.atletascomficheiros.ui.JanelaPrincipalSceneController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Atleta">
+                    <items>
+                        <Menu mnemonicParsing="false" text="Novo Atleta">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#menuItemAmadorAction" text="Amador" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuItemProfissionalAction" text="Profissional" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuItemSemiProfissionalAction" text="Semi-Profissional" />
+                            </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#menuItemSairAction" text="Sair" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <ListView fx:id="lstViewAtletas" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>
