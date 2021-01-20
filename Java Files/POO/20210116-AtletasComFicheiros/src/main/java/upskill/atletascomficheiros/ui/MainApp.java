@@ -31,4 +31,21 @@ public class MainApp extends Application {
         stage.show();
     }
 
+    
+    private void test1 () {
+        if (true) {
+            throw new IllegalArgumentException("extends RunTimeException");
+        } else {
+            throw new myException("myException extends Exception");
+        }
+        throw new RuntimeException("RunTime Exception");
+    }
+    
+    class myException extends RuntimeException {
+
+        public myException(String string) {
+            super(string);
+        }
+        
+    }
 }

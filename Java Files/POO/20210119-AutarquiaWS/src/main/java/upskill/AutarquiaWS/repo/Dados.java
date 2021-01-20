@@ -28,7 +28,7 @@ public class Dados {
         try {
             ObjectInputStream o = new ObjectInputStream(new FileInputStream(file.toString()));
             autarquia = (Autarquia) o.readObject();
-            o.close();
+            o.close();  
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
