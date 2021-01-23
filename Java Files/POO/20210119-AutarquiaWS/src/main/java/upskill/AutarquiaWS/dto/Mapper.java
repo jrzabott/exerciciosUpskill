@@ -9,7 +9,12 @@ import upskill.AutarquiaWS.model.Data;
 import upskill.AutarquiaWS.model.Funcionario;
 import upskill.AutarquiaWS.model.Pessoa;
 import java.util.ArrayList;
+import upskill.AutarquiaWS.exception.TerrenoErroTipoTerrenoException;
 import upskill.AutarquiaWS.model.Freguesia;
+import upskill.AutarquiaWS.model.Terreno;
+import upskill.AutarquiaWS.model.TerrenoCircular;
+import upskill.AutarquiaWS.model.TerrenoRetangular;
+import upskill.AutarquiaWS.model.TerrenoTriangular;
 
 public class Mapper {
 
@@ -25,6 +30,74 @@ public class Mapper {
         Data data = null;
         data = new Data(dataDTO.getDia(), dataDTO.getMes(), dataDTO.getAno());
         return data;
+    }
+
+    public static ListaTerrenoDTO listTerreno2TerrenoDTO(ArrayList<Terreno> terrenos) {
+        ArrayList<TerrenoDTO> terrenosDTO = new ArrayList<>();
+        for (Terreno terreno : terrenos) {
+            try {
+                TerrenoDTO terrenoDTO = terreno2TerrenoDTO(terreno);
+                terrenosDTO.add(terrenoDTO);
+            } catch (NullPointerException e) {
+            }
+        }
+        ListaTerrenoDTO listaTerrenoDTO = new ListaTerrenoDTO();
+        listaTerrenoDTO.setTerrenos(terrenosDTO);
+        return listaTerrenoDTO;
+    }
+
+    public static TerrenoDTO terreno2TerrenoDTO(Terreno terreno) {
+                TerrenoDTO terrenoDTO = null;
+        switch (terreno.getShape()) {
+            case CIRCLE:
+                terrenoDTO = new TerrenoCircularDTO();
+                ((TerrenoCircularDTO) terrenoDTO).setNumber(terreno.getNumber());
+                ((TerrenoCircularDTO) terrenoDTO).setRadius(((TerrenoCircular) terreno).getRadius());
+                break;
+            case RECTANGLE:
+                terrenoDTO = new TerrenoRetangularDTO();
+                ((TerrenoRetangularDTO) terrenoDTO).setNumber(terreno.getNumber());
+                ((TerrenoRetangularDTO) terrenoDTO).setLength(((TerrenoRetangular) terreno).getLength());
+                ((TerrenoRetangularDTO) terrenoDTO).setWidth(((TerrenoRetangular) terreno).getWidth());
+                break;
+            case TRIANGLE:
+                terrenoDTO = new TerrenoTriangularDTO();
+                ((TerrenoTriangularDTO) terrenoDTO).setNumber(terreno.getNumber());
+                ((TerrenoTriangularDTO) terrenoDTO).setA(((TerrenoTriangular) terreno).getA());
+                ((TerrenoTriangularDTO) terrenoDTO).setB(((TerrenoTriangular) terreno).getB());
+                ((TerrenoTriangularDTO) terrenoDTO).setC(((TerrenoTriangular) terreno).getC());
+                break;
+            default:
+                throw new TerrenoErroTipoTerrenoException(terrenoDTO.getShape().name() + ": Erro no Tipo de Terreno.");
+        }
+        return terrenoDTO;
+    }
+
+    public static Terreno terrenoDTO2Terreno(TerrenoDTO terrenoDTO) {
+        Terreno terreno = null;
+        switch (terrenoDTO.getShape()) {
+            case CIRCLE:
+                terreno = new TerrenoCircular();
+                ((TerrenoCircular) terreno).setNumber(terrenoDTO.getNumber());
+                ((TerrenoCircular) terreno).setRadius(((TerrenoCircularDTO) terrenoDTO).getRadius());
+                break;
+            case RECTANGLE:
+                terreno = new TerrenoRetangular();
+                ((TerrenoRetangular) terreno).setNumber(terrenoDTO.getNumber());
+                ((TerrenoRetangular) terreno).setLength(((TerrenoRetangularDTO) terrenoDTO).getLength());
+                ((TerrenoRetangular) terreno).setWidth(((TerrenoRetangularDTO) terrenoDTO).getWidth());
+                break;
+            case TRIANGLE:
+                terreno = new TerrenoTriangular();
+                ((TerrenoTriangular) terreno).setNumber(terrenoDTO.getNumber());
+                ((TerrenoTriangular) terreno).setA(((TerrenoTriangularDTO) terrenoDTO).getA());
+                ((TerrenoTriangular) terreno).setB(((TerrenoTriangularDTO) terrenoDTO).getB());
+                ((TerrenoTriangular) terreno).setC(((TerrenoTriangularDTO) terrenoDTO).getC());
+                break;
+            default:
+                throw new TerrenoErroTipoTerrenoException(terrenoDTO.getShape().name() + ": Erro no Tipo de Terreno.");
+        }
+        return terreno;
     }
 
     public static PessoaDTO pessoa2PessoaDTO(Pessoa pessoa) throws NullPointerException {

@@ -6,38 +6,120 @@
 package upskill.AutarquiaWS.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import upskill.AutarquiaWS.exception.NomeFreguesiaInvalidoException;
 import upskill.AutarquiaWS.exception.IdInvalidoException;
 import java.util.Objects;
+import upskill.AutarquiaWS.exception.ElementoNaoExistenteException;
+import upskill.AutarquiaWS.exception.TerrenoDuplicadoException;
 
 /**
  *
  * @author user
  */
-public class Freguesia implements Serializable{
+public class Freguesia implements Serializable {
 
     private final static long ID_DEFAULT = 0;
     private final static String NOME_DEFAULT = "";
 
     private long id;
     private String nome;
+    private ArrayList<Terreno> terrenos;
 
     public Freguesia(long id, String nome) {
         this.id = id;
         this.nome = nome;
+        this.terrenos = new ArrayList<>();
     }
 
     public Freguesia() {
         this.id = ID_DEFAULT;
         this.nome = NOME_DEFAULT;
+        this.terrenos = new ArrayList<>();
     }
 
-    Freguesia(Freguesia freguesia) {
+    public void addTerreno(Terreno terreno) {
+        Terreno t = getTerrenoByNumber(terreno.getNumber());
+        if (t == null) {
+            this.terrenos.add(terreno);
+        } else {
+            throw new TerrenoDuplicadoException(terreno.getNumber() + ": Terreno já existe.");
+        }
+    }
+
+    public void removeTerreno(long number) {
+        Terreno terreno = null;
+        for (int i = 0; i < this.getTerrenos().size(); i++) {
+            terreno = this.getTerrenos().get(i);
+            if (terreno.getNumber() == number) {
+                this.getTerrenos().remove(i);
+            }
+        }
+        throw new ElementoNaoExistenteException(number + ": Não existe este terreno");
+    }
+
+    public void updateTerreno(long number, Terreno t) {
+        Terreno terreno = null;
+        boolean atualizado = false;
+        for (int i = 0; i < this.getTerrenos().size(); i++) {
+            terreno = this.getTerrenos().get(i);
+            if (terreno.getNumber() == number) {
+//                terreno = t;
+this.getTerrenos().set(i, t);
+                atualizado = true;
+            }
+        }
+        if (!atualizado) {
+            throw new ElementoNaoExistenteException(number + ": Não existe este terreno");
+        }
+    }
+
+    public ArrayList<Terreno> getTerrenos() {
+        Terreno terreno;
+        ArrayList<Terreno> lista = new ArrayList<>();
+
+        for (int i = 0; i < this.terrenos.size(); i++) {
+            terreno = this.terrenos.get(i);
+            lista.add(terreno);
+        }
+        return lista;
+    }
+
+    public Terreno getTerreno(long number) {
+        return getTerrenoByNumber(number);
+    }
+
+    private Terreno getTerrenoByNumber(long number) {
+        Terreno terreno;
+        for (int i = 0; i < this.getTerrenos().size(); i++) {
+            terreno = this.getTerrenos().get(i);
+            if (terreno.getNumber() == number) {
+                Terreno copia;
+                switch (terreno.getShape()) {
+                    case CIRCLE:
+                        copia = new TerrenoCircular((TerrenoCircular) terreno);
+                        break;
+                    case RECTANGLE:
+                        copia = new TerrenoRetangular((TerrenoRetangular) terreno);
+                        break;
+                    case TRIANGLE:
+                        copia = new TerrenoTriangular((TerrenoTriangular) terreno);
+                        break;
+                    default:
+                        copia = null;
+                }
+                return copia;
+            }
+        }
+        return null;
+    }
+
+    public Freguesia(Freguesia freguesia) {
         setId(freguesia.id);
         setNome(freguesia.nome);
+        setTerrenos(freguesia.terrenos);
     }
 
-   
     public long getId() {
         return id;
     }
@@ -107,7 +189,6 @@ public class Freguesia implements Serializable{
         return true;
     }
 
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -115,6 +196,13 @@ public class Freguesia implements Serializable{
         sb.append(", nome=").append(nome);
         sb.append('}');
         return sb.toString();
+    }
+
+    /**
+     * @param terrenos the terrenos to set
+     */
+    public void setTerrenos(ArrayList<Terreno> terrenos) {
+        this.terrenos = terrenos;
     }
 
 }

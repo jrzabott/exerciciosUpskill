@@ -64,7 +64,8 @@ public class PessoasController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_XML_VALUE,
             produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Object> addPessoa(@RequestBody PessoaDTO pessoaDTO) {
+    public ResponseEntity<Object> addPessoa(
+            @RequestBody PessoaDTO pessoaDTO) {
         try {
             PessoasService.addPessoa(pessoaDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -101,5 +102,4 @@ public class PessoasController {
             return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
         }
     }
-
 }

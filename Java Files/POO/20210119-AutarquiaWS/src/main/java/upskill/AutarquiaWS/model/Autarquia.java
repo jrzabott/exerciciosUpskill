@@ -14,23 +14,24 @@ import java.util.ArrayList;
 import upskill.AutarquiaWS.exception.FreguesiaDuplicadoException;
 
 public class Autarquia implements Serializable {
-
+    
     private String nome;
     private ArrayList<Pessoa> pessoas;
     private ArrayList<Freguesia> freguesias;
-
+    
     public Autarquia(String nome, Freguesia freguesia) {
         this.nome = nome;
         this.pessoas = new ArrayList<Pessoa>();
         this.freguesias = new ArrayList<Freguesia>();
         this.freguesias.add(freguesia);
     }
+    
     public Autarquia(String nome) {
         this.nome = nome;
         this.pessoas = new ArrayList<Pessoa>();
         this.freguesias = new ArrayList<Freguesia>();
     }
-
+    
     public ArrayList<Pessoa> getAllPessoas() {
         Pessoa pessoa;
         ArrayList<Pessoa> lista = new ArrayList<>();
@@ -60,7 +61,7 @@ public class Autarquia implements Serializable {
         }
         return lista;
     }
-
+    
     public void addPessoa(Pessoa pessoa) throws NifDuplicadoException {
         Pessoa p = getPessoaByNif(pessoa.getNif());
         if (p == null) {
@@ -69,11 +70,11 @@ public class Autarquia implements Serializable {
             throw new NifDuplicadoException(p.getNif() + ": NIF já existe");
         }
     }
-
+    
     public Pessoa getPessoa(long nif) {
         return getPessoaByNif(nif);
     }
-
+    
     public void removePessoa(long nif) throws ElementoNaoExistenteException {
         Pessoa pessoa = null;
         for (int i = 0; i < this.pessoas.size(); i++) {
@@ -89,14 +90,15 @@ public class Autarquia implements Serializable {
         }
         throw new ElementoNaoExistenteException(nif + ": Não existe essa pessoa");
     }
-
+    
     public void updatePessoa(long nif, Pessoa p) throws ElementoNaoExistenteException {
         Pessoa pessoa = null;
         boolean updated = false;
         for (int i = 0; i < this.pessoas.size() && !updated; i++) {
             pessoa = this.pessoas.get(i);
             if (pessoa.getNif() == nif) {
-                pessoa = p;
+//                pessoa = p;
+                this.pessoas.set(i, p);
                 updated = true;
             }
         }
@@ -104,7 +106,7 @@ public class Autarquia implements Serializable {
             throw new ElementoNaoExistenteException(nif + ": Não existe essa pessoa");
         }
     }
-
+    
     private Pessoa getPessoaByNif(long nif) {
         Pessoa pessoa = null;
         for (int i = 0; i < this.pessoas.size(); i++) {
@@ -131,7 +133,7 @@ public class Autarquia implements Serializable {
         }
         return lista;
     }
-
+    
     public void addFuncionario(Funcionario funcionario) throws NumeroFuncionarioDuplicadoException,
             NifDuplicadoException {
         Pessoa p = getPessoaByNif(funcionario.getNif());
@@ -146,7 +148,7 @@ public class Autarquia implements Serializable {
             throw new NifDuplicadoException(p.getNif() + ": NIF já existe");
         }
     }
-
+    
     public Funcionario getFuncionario(int nr) {
         Funcionario funcionario = getFuncionarioByNr(nr);
         if (funcionario != null) {
@@ -155,7 +157,7 @@ public class Autarquia implements Serializable {
         }
         return null;
     }
-
+    
     public void removeFuncionario(int nr) throws ElementoNaoExistenteException {
         Pessoa pessoa = null;
         Funcionario funcionario = null;
@@ -173,7 +175,7 @@ public class Autarquia implements Serializable {
         }
         throw new ElementoNaoExistenteException(nr + ": Não existe esse funcionário");
     }
-
+    
     public void updateFuncionario(int nr, Funcionario f) throws ElementoNaoExistenteException {
         boolean updated = false;
         Pessoa pessoa = null;
@@ -183,7 +185,8 @@ public class Autarquia implements Serializable {
             if (pessoa instanceof Funcionario) {
                 funcionario = (Funcionario) pessoa;
                 if (funcionario.getNumeroFuncionario() == nr) {
-                    funcionario = f;
+//                    funcionario = f;
+                    this.pessoas.set(i, f);
                     updated = true;
                 }
             }
@@ -192,7 +195,7 @@ public class Autarquia implements Serializable {
             throw new ElementoNaoExistenteException(nr + ": Não existe esse funcionario");
         }
     }
-
+    
     private Funcionario getFuncionarioByNr(int nr) {
         Pessoa pessoa = null;
         Funcionario funcionario = null;
@@ -207,7 +210,7 @@ public class Autarquia implements Serializable {
         }
         return null;
     }
-
+    
     public void addFreguesia(Freguesia freguesia) throws NifDuplicadoException {
         Freguesia f = getFreguesiaById(freguesia.getId());
         if (f == null) {
@@ -216,7 +219,7 @@ public class Autarquia implements Serializable {
             throw new FreguesiaDuplicadoException(f.getId() + " - " + f.getNome() + ": ID de Freguesia já existe.");
         }
     }
-
+    
     private Freguesia getFreguesiaById(long id) {
         Freguesia freguesia = null;
         for (int i = 0; i < this.freguesias.size(); i++) {
@@ -228,7 +231,7 @@ public class Autarquia implements Serializable {
         }
         return null;
     }
-
+    
     public ArrayList<Freguesia> getFreguesias() {
         Freguesia freguesia;
         ArrayList<Freguesia> lista = new ArrayList<>();
@@ -238,11 +241,11 @@ public class Autarquia implements Serializable {
         }
         return lista;
     }
-
+    
     public Freguesia getFreguesia(long id) {
         return getFreguesiaById(id);
     }
-
+    
     public void removeFreguesia(long id) {
         Freguesia freguesia = null;
         for (int i = 0; i < this.freguesias.size(); i++) {
@@ -255,14 +258,15 @@ public class Autarquia implements Serializable {
         }
         throw new ElementoNaoExistenteException(id + ": Não existe uma freguesia com este ID");
     }
-
+    
     public void updateFreguesia(long id, Freguesia f) {
         Freguesia freguesia = null;
         boolean updated = false;
         for (int i = 0; i < this.freguesias.size() && !updated; i++) {
             freguesia = this.freguesias.get(i);
             if (freguesia.getId() == id) {
-                freguesia = f;
+//                freguesia = f;
+                this.freguesias.set(i, f);
                 updated = true;
             }
         }

@@ -8,10 +8,10 @@
         <version>2.4.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>upskill</groupId>
-    <artifactId>20210119-AutarquiaWS</artifactId>
+    <groupId>com</groupId>
+    <artifactId>company</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>20210119-AutarquiaWS</name>
+    <name>AutarquiaWS</name>
     <description>AutarquiaWS project for Spring Boot</description>
 
     <properties>
@@ -33,13 +33,6 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
         </dependency>
-
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-devtools</artifactId>
-    <optional>true</optional>
-</dependency>
-
     </dependencies>
 
     <build>
