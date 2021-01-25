@@ -13,7 +13,7 @@ import upskill.AutarquiaWS.repo.ShapeTerreno;
  *
  * @author user
  */
-@JsonPropertyOrder({"length", "width"})
+@JsonPropertyOrder({"number", "length", "width"})
 public class TerrenoRetangularDTO extends TerrenoDTO {
     @JacksonXmlProperty(localName = "length")
     private double length;

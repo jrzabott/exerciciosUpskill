@@ -13,7 +13,7 @@ import upskill.AutarquiaWS.repo.ShapeTerreno;
  *
  * @author user
  */
-@JsonPropertyOrder({"a", "b", "c"})
+@JsonPropertyOrder({"number", "a", "b", "c"})
 public class TerrenoTriangularDTO extends TerrenoDTO {
 
      @JacksonXmlProperty(localName = "a")

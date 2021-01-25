@@ -52,7 +52,8 @@ public class Freguesia implements Serializable {
         for (int i = 0; i < this.getTerrenos().size(); i++) {
             terreno = this.getTerrenos().get(i);
             if (terreno.getNumber() == number) {
-                this.getTerrenos().remove(i);
+                this.terrenos.remove(i);
+                return;
             }
         }
         throw new ElementoNaoExistenteException(number + ": Não existe este terreno");
@@ -65,7 +66,7 @@ public class Freguesia implements Serializable {
             terreno = this.getTerrenos().get(i);
             if (terreno.getNumber() == number) {
 //                terreno = t;
-this.getTerrenos().set(i, t);
+                this.terrenos.set(i, t);
                 atualizado = true;
             }
         }

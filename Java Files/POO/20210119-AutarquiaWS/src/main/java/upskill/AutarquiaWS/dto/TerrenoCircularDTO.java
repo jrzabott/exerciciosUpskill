@@ -16,7 +16,7 @@ import upskill.AutarquiaWS.repo.ShapeTerreno;
  *
  * @author user
  */
-@JsonPropertyOrder({"radius"})
+@JsonPropertyOrder({"number", "radius"})
 public class TerrenoCircularDTO extends TerrenoDTO {
 
     @JacksonXmlProperty(localName = "radius")

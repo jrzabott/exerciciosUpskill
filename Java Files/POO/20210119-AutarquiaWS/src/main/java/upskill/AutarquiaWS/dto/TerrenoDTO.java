@@ -5,11 +5,11 @@
  */
 package upskill.AutarquiaWS.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import upskill.AutarquiaWS.repo.ShapeTerreno;
 
 /**
@@ -28,10 +28,10 @@ public abstract class TerrenoDTO {
 
     @JacksonXmlProperty(localName = "number")
     private long number;
-    @JacksonXmlProperty(localName = "shape")
+    @JsonIgnore
     private ShapeTerreno shape;
 
-    public  TerrenoDTO() {
+    public TerrenoDTO() {
     }
 
     public long getNumber() {

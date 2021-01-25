@@ -26,18 +26,25 @@ import upskill.AutarquiaWS.service.TerrenosService;
 @RequestMapping("/api")
 public class TerrenosController {
 
-//    @RequestMapping(value = "/freguesias/{freguesiaId}/terrenos",
-//            method = RequestMethod.GET,
-//            produces = MediaType.APPLICATION_XML_VALUE)
-//    public ResponseEntity<Object> getTerrenos() {
-//        try {
-//            System.out.println("Teste");
-//            return new ResponseEntity<>(HttpStatus.OK);
-//
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
-//        }
-//    }
+    @RequestMapping(value = "/freguesias/{freguesiaId}/terrenos/{terrenoId}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<Object> getTerreno(
+            @PathVariable("freguesiaId") long freguesiaId,
+            @PathVariable("terrenoId") long terrenoId
+    ) {
+        try {
+            TerrenoDTO terrenoDTO = TerrenosService.getTerreno(freguesiaId, terrenoId);
+            if (terrenoDTO != null) {
+                return new ResponseEntity<>(terrenoDTO, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
+        }
+    }
+
     @RequestMapping(value = "/freguesias/{freguesiaId}/terrenos",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_XML_VALUE)
@@ -69,6 +76,40 @@ public class TerrenosController {
             TerrenosService.addTerreno(freguesiaId, terrenoDTO);
             return new ResponseEntity<>(HttpStatus.OK);
 
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
+        }
+    }
+
+    @RequestMapping(value = "/freguesias/{freguesiaId}/terrenos/{terrenoId}",
+            method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_XML_VALUE,
+            produces = MediaType.APPLICATION_XML_VALUE
+    )
+    public ResponseEntity<Object> updateTerreno(
+            @PathVariable("freguesiaId") long freguesiaId,
+            @PathVariable("terrenoId") long terrenoId,
+            @RequestBody TerrenoDTO terrenoDTO
+    ) {
+        try {
+            TerrenosService.updateTerreno(freguesiaId, terrenoId, terrenoDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
+        }
+    }
+    
+    @RequestMapping(
+            value = "/freguesias/{freguesiaId}/terrenos/{terrenoId}",
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<Object> removeTerreno(
+            @PathVariable("freguesiaId") long freguesiaId,
+            @PathVariable("terrenoId") long terrenoId
+    ){
+        try {
+        TerrenosService.removeTerreno(freguesiaId, terrenoId);
+        return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
         }
