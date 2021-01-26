@@ -74,7 +74,7 @@ public class TerrenosController {
     ) {
         try {
             TerrenosService.addTerreno(freguesiaId, terrenoDTO);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (Exception e) {
             return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
