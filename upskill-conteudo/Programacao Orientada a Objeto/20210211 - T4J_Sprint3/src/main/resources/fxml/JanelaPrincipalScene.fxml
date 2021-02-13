@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane onKeyReleased="#teclaPressionadaAction" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.upskill.listatarefas.ui.JanelaPrincipalSceneController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+            <Menu fx:id="menuFile" mnemonicParsing="false" onShowing="#menuFileOnShowing" text="File">
+              <items>
+                  <MenuItem fx:id="menuItemOpenBinary" mnemonicParsing="false" onAction="#menuItemOpenBinaryAction" text="Open Binary" />
+                  <MenuItem fx:id="menuItemOpenBinaryFrom" mnemonicParsing="false" onAction="#menuItemOpenBinaryFromAction" text="Open Binary From..." />
+                  <MenuItem fx:id="menuItemSaveBinary" mnemonicParsing="false" onAction="#menuItemSaveBinaryAction" text="Save Binary" />
+                  <MenuItem fx:id="menuItemSaveBinaryAs" mnemonicParsing="false" onAction="#menuItemSaveBinaryAsAction" text="Save Binary As..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem fx:id="menuItemSaveTextAs" mnemonicParsing="false" onAction="#menuItemSaveTextAsAction" text="Save Text As..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#menuItemExitAction" text="Exit" />
+              </items>
+            </Menu>
+          <Menu fx:id="menuTask" mnemonicParsing="false" onAction="#menuTaskAction" onShowing="#menuTaskOnShowing" text="Task">
+               <items>
+                  <MenuItem fx:id="menuItemTaskAdd" mnemonicParsing="false" onAction="#menuItemTaskAddAction" text="Add" />
+                  <Menu fx:id="menuRemove" mnemonicParsing="false" text="Remove">
+                    <items>
+                      <MenuItem fx:id="menuItemRemoveAll" mnemonicParsing="false" onAction="#menuItemRemoveAllAction" text="All" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="menuItemRemoveSelected" mnemonicParsing="false" onAction="#menuItemRemoveSelectedAction" text="Selected" />
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="menuRegistarOrganizacao" mnemonicParsing="false" onAction="#menuRegistarOrganizacaoClick" text="Registar Organização" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <ListView fx:id="lstViewTarefas" onContextMenuRequested="#lstViewTarefasContextMenuRequested" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

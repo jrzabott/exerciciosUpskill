@@ -9,8 +9,8 @@ upskill/atletascomficheiros/ui/AlertUI.class
 upskill/atletascomficheiros/model/Atleta.class
 upskill/atletascomficheiros/model/AtletaAmador.class
 upskill/atletascomficheiros/model/AtletaProfissional.class
-upskill/atletascomficheiros/model/RetencaoIRS.class
 upskill/atletascomficheiros/model/AtletaValorPremioComparator.class
+upskill/atletascomficheiros/model/RetencaoIRS.class
 upskill/atletascomficheiros/model/Atividade$TipoAtividades$2.class
 upskill/atletascomficheiros/controller/ApplicationController.class
 upskill/atletascomficheiros/model/ClubeDesportivo.class

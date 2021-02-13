@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="500.0" maxWidth="800.0" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="t4j.app.ui.MainSceneController">
+    <center>
+        <TextArea fx:id="txtArea" editable="false" minHeight="200.0" prefHeight="300.0" prefWidth="600.0" wrapText="true" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="9.0" />
+            </font>
+        </TextArea>
+    </center>
+   <bottom>
+          <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+            <Button mnemonicParsing="false" onAction="#btnHSAllMenus" text="Hide/Show-AllMenus" />
+                  <Button fx:id="btnDummy" mnemonicParsing="false" onAction="#btnDummyAction" text="DummyButton" visible="false" />
+                  <Button fx:id="btnDummy2" mnemonicParsing="false" onAction="#btnDummyAction2" text="DummyButton2" visible="false" />
+            <Label fx:id="lblAppContext" text="Label" visible="false" />
+            <Label fx:id="lblSessionInfo" text="Label" visible="false" />
+              </items>
+          </ToolBar>
+   </bottom>
+   <top>
+          <MenuBar fx:id="menuBarMainScene" BorderPane.alignment="CENTER">
+              <menus>
+            <Menu fx:id="menuPrincipal" mnemonicParsing="false" text="Menu Principal">
+              <items>
+                <MenuItem fx:id="menuItemLogin" mnemonicParsing="false" onAction="#menuItemLoginAction" text="Login..." />
+                  <MenuItem fx:id="menuItemLogout" mnemonicParsing="false" onAction="#menuItemLogoutAction" text="Logout" />
+                  <MenuItem fx:id="menuItemSair" mnemonicParsing="false" onAction="#menuItemSairAction" text="Sair" />
+              </items>
+            </Menu>
+                  <Menu fx:id="menuAdministracao" mnemonicParsing="false" text="Administração">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#menuItemDefinirAreaAtividade" text="Definir Área de Atividade ..." />
+                          <MenuItem mnemonicParsing="false" onAction="#menuItemDefinirCategoriaTarefa" text="Definir Categoria de Tarefa ..." />
+                          <MenuItem mnemonicParsing="false" onAction="#menuItemDefinirCompetenciaTecnica" text="Definir Competência Tecnica ..." />
+                          <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem mnemonicParsing="false" onAction="#menuItemSair" text="Sair" />
+                      </items>
+                  </Menu>
+                  <Menu fx:id="menuGestor" mnemonicParsing="false" text="Gestor">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#menuItemEspecificarColaboradorAction" text="Especificar Colaborador ..." />
+                      </items>
+                  </Menu>
+                  <Menu fx:id="menuColaborador" mnemonicParsing="false" text="Colaborador">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#menuItemEspecificarTarefaAction" text="Especificar Tarefa ..." />
+                      </items>
+                  </Menu>
+                  <Menu fx:id="menuFreelancer" mnemonicParsing="false" text="Freelancer">
+                      <items>
+                          <MenuItem mnemonicParsing="false" text="TBD" />
+                      </items>
+                  </Menu>
+            <Menu fx:id="menuUtilizadorNA" mnemonicParsing="false" text="Utilizador Nao Autenticado">
+              <items>
+                <MenuItem fx:id="menuItemRegistarOrganizacao" mnemonicParsing="false" onAction="#menuItemRegistarOrganizacaoAction" text="Registar Organizaçao ..." />
+              </items>
+            </Menu>
+                  <Menu fx:id="menuAjuda" mnemonicParsing="false" text="Ajuda">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#menuItemSobre" text="Sobre ..." />
+                      </items>
+                  </Menu>
+              </menus>
+          </MenuBar>
+   </top>
+</BorderPane>

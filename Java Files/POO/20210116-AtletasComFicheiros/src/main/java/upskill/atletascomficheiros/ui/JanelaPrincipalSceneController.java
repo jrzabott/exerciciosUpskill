@@ -13,11 +13,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import upskill.atletascomficheiros.controller.ApplicationController;
@@ -37,6 +41,8 @@ public class JanelaPrincipalSceneController implements Initializable {
     private ApplicationController appController;
 
     private AtletaAmadorUI amadorUI;
+    @FXML
+    private BorderPane borderPaneJanelaPrincipal;
     private AtletaProfissionalUI profissionalUI;
     private AtletaSemiProfissionalUI semiProfissionalUI;
 
@@ -123,6 +129,10 @@ public class JanelaPrincipalSceneController implements Initializable {
     @FXML
     private void menuItemAmadorAction(ActionEvent event) {
         loadAtletaAmadorUI();
+//        String text = borderPaneJanelaPrincipal.getId();
+//        borderPaneJanelaPrincipal.getScene().getWindow().hide();
+//        System.out.println(text);
+        
     }
 
     @FXML
@@ -147,6 +157,10 @@ public class JanelaPrincipalSceneController implements Initializable {
         String[] atletas = appController.getListaAtletas();
         lstViewAtletas.getItems().clear();
         lstViewAtletas.getItems().addAll(Arrays.asList(atletas));
+    }
+
+    public Scene getScene() {
+        return scene;
     }
 
 }

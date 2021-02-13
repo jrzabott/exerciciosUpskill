@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+create or replace function novaOrganizacao(\
+  p_nome organizacao.nome%type\
+, p_nif organizacao.nif%type\
+, p_website organizacao.nif%type\
+, p_telefone organizacao.nif%type\
+, p_email organizacao.nif%type) return int\
+is\
+  v_ret int;\
+begin\
+  insert into organizacao(nome, nif, website, telefone, email)\
+  values(p_nome, p_nif, p_website, p_telefone, p_email) returning id into v_ret;\
+  \
+  return v_ret;\
+end;\
+/\
+\
+create or replace procedure adicionarEnderecoOrganizacao(\
+  p_id_organizacao enderecopostal.id_organizacao%type\
+, p_morada enderecopostal.morada%type\
+, p_cod_postal enderecopostal.cod_postal%type\
+, p_localidade enderecopostal.localidade%type)\
+is\
+begin\
+  insert into enderecopostal(morada, cod_postal, localidade, id_organizacao)\
+  values(p_morada, p_cod_postal, p_localidade, p_id_organizacao);\
+  \
+  raise_application_error(-20000, 'erro');\
+end;\
+/\
+}

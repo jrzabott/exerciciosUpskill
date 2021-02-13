@@ -27,26 +27,27 @@ public class Dados {
 //        Autarquia autarquia = new Autarquia("Curral de Moinas");
         Freguesia freguesiaInicial = new Freguesia(0, "");
         Autarquia autarquia = new Autarquia("Curral de Moinas", freguesiaInicial);
-        
+
         Path file = Paths.get(AUTARQUIA_FILE);
         try {
             ObjectInputStream o = new ObjectInputStream(new FileInputStream(file.toString()));
             autarquia = (Autarquia) o.readObject();
-            o.close();  
+            o.close();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return autarquia;
     }
-public static void guardarDados(Autarquia autarquia){
-    Path file = Paths.get(AUTARQUIA_FILE);
-    try{
-        ObjectOutputStream o; 
-        o = new ObjectOutputStream(Files.newOutputStream(file, CREATE));
-        o.writeObject(autarquia);
-        o.close();
-    } catch(Exception ex) {
-        System.out.println(ex.getMessage());
+
+    public static void guardarDados(Autarquia autarquia) {
+        Path file = Paths.get(AUTARQUIA_FILE);
+        try {
+            ObjectOutputStream o;
+            o = new ObjectOutputStream(Files.newOutputStream(file, CREATE));
+            o.writeObject(autarquia);
+            o.close();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-}
 }
